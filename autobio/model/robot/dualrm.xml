@@ -1,0 +1,230 @@
+<mujoco model="robot_description">
+  <compiler angle="radian" meshdir="../../assets/robot/dualarm"/>
+  <option gravity="0 0 0" integrator="implicitfast" timestep="0.001"/>
+
+  <asset>
+    <mesh name="ranger_mini3" file="ranger_mini3.stl"/>
+    <mesh name="ranger_mini_v3_wheel_right" file="ranger_mini_v3_wheel_right.stl"/>
+    <mesh name="ranger_mini_v3_wheel" file="ranger_mini_v3_wheel.stl"/>
+    <mesh name="body_link" file="body_link.STL"/>
+    <mesh name="lift_Link" file="lift_Link.STL"/>
+    <mesh name="arm_link" file="arm_link.STL"/>
+    <mesh name="link1" file="link1.STL"/>
+    <mesh name="link2" file="link2.STL"/>
+    <mesh name="link3" file="link3.STL"/>
+    <mesh name="link4" file="link4.STL"/>
+    <mesh name="link5" file="link5.STL"/>
+    <mesh name="link6" file="link6.STL"/>
+    <mesh name="pan_tilt_base" file="pan_tilt_base.stl"/>
+    <mesh name="yaw" file="yaw.stl"/>
+    <mesh name="pitch" file="pitch.stl"/>
+    <mesh name="realsense" file="realsense.stl"/>
+    <mesh name="base_link" file="base_link.STL"/>
+    <mesh name="link_crank" file="link_crank.STL"/>
+    <mesh name="link_rod" file="link_rod.STL"/>
+    <mesh name="link_distal_phalanx" file="link_distal_phalanx.STL"/>
+    <mesh name="link_proximal_phalanx" file="link_proximal_phalanx.STL"/>
+    <mesh name="robosense_16" file="robosense_16.stl"/>
+    <model name="gripper" file="2f85.xml" content_type="text/xml" />
+  </asset>
+
+  <default>
+    <default class="collision">
+      <geom group="3" type="capsule" />
+    </default>
+    <default class="visual">
+      <geom group="2" contype="0" conaffinity="0"/>
+    </default>
+    <default class="position">
+        <position kp="500" dampratio="1" forcerange="-60 60"/>
+        <default class="position_mid">
+            <position kp="200" dampratio="1" forcerange="-30 30"/>
+        </default>
+        <default class="position_small">
+            <position kp="100" dampratio="1" forcerange="-10 10"/>
+        </default>
+    </default>
+  </default>
+
+  <worldbody>
+    <!-- <geom type="plane" size="1 1 1" rgba="0.8 0.9 0.8 1"/> -->
+    <geom pos="0 0 0.32" quat="0.000796327 1 0 0" type="mesh" class="visual" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="ranger_mini3"/>
+    <geom size="0.25 0.175 0.1" pos="0 0 0.22" class="collision" type="box" rgba="0.792157 0.819608 0.933333 1"/>
+    <geom pos="0 0 0.342" quat="1 0 0 0" type="mesh" class="visual" density="0" rgba="0.79216 0.81961 0.93333 1" mesh="body_link"/>
+    <!-- <geom pos="0 0 0.342" quat="1 0 0 0" type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="body_link"/> -->
+    <geom pos="0.1683 0 1.562" quat="0.707105 0 0 -0.707108" type="mesh" class="visual" density="0" rgba="0.2 0.2 0.2 1" mesh="pan_tilt_base"/>
+    <!-- <geom size="0.053 0.047 0.076" pos="0.3 0.075 0.356" quat="0.707105 -0.707108 0 0" class="collision" type="box"/> -->
+    <geom pos="0.3 0 0.356" quat="0.707105 -0.707108 0 0" type="mesh" class="visual" density="0" mesh="robosense_16"/>
+    <geom pos="0.365 0 0.492" quat="0.310743 0.635198 0.635168 0.310682" type="mesh" class="visual" density="0" mesh="realsense"/>
+    <geom size="0.012525 0.045 0.0125" pos="0.365 0 0.492" quat="0.94588 0 0.324516 0" class="collision" type="box"/>
+    <body name="fr_steering_wheel_link" pos="0.25 -0.19 0.22">
+      <inertial pos="1.8493e-05 1.2713e-06 0.043679" quat="-0.070656 0.703532 0.070657 0.703603" mass="1" diaginertia="0.010465 0.00636302 0.00636248"/>
+      <!-- <joint name="fr_steering_joint" pos="0 0 0" axis="0 0 -1" range="-2.1 2.1" actuatorfrcrange="-5 5"/> -->
+      <geom pos="-0.248 -0.113 0.155" quat="0.000563312 0.000562864 0.706825 0.707388" type="mesh" class="visual" density="0" rgba="0.79216 0.81961 0.93333 1" mesh="ranger_mini_v3_wheel_right"/>
+      <geom class="collision" size="0.001 0.0005" type="cylinder" rgba="0.79216 0.81961 0.93333 1"/>
+      <body name="fr_wheel_link" pos="0 0 -0.12">
+        <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="8" diaginertia="0.0324 0.02047 0.02047"/>
+        <!-- <joint name="fr_wheel" pos="0 0 0" axis="0 1 0"/> -->
+        <geom size="0.01 0.005" quat="0.707388 0.706825 0 0" type="cylinder" class="visual" density="0"/>
+        <geom class="collision" size="0.09 0.04" pos="0 0 -0.005" quat="0.707388 0.706825 0 0" type="cylinder"/>
+      </body>
+    </body>
+    <body name="fl_steering_wheel_link" pos="0.25 0.19 0.22">
+      <inertial pos="-0.0017956 -9.6304e-08 0.043642" quat="-0.0165928 0.692206 0.0172886 0.721302" mass="1" diaginertia="0.0104649 0.006363 0.00636255"/>
+      <!-- <joint name="fl_steering_joint" pos="0 0 0" axis="0 0 -1" range="-2.1 2.1" actuatorfrcrange="-5 5"/> -->
+      <geom pos="-0.248 -0.125 -0.192" quat="0.000563312 0.000562864 0.706825 0.707388" type="mesh" class="visual" density="0" rgba="0.79216 0.81961 0.93333 1" mesh="ranger_mini_v3_wheel"/>
+      <geom class="collision" size="0.001 0.0005" type="cylinder" rgba="0.79216 0.81961 0.93333 1"/>
+      <body name="fl_wheel_link" pos="0 0 -0.12">
+        <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="8" diaginertia="0.0324 0.02047 0.02047"/>
+        <!-- <joint name="fl_wheel" pos="0 0 0" axis="0 1 0"/> -->
+        <geom size="0.01 0.005" quat="0.707388 0.706825 0 0" type="cylinder" class="visual" density="0"/>
+        <geom class="collision" size="0.09 0.04" quat="0.707388 0.706825 0 0" type="cylinder"/>
+      </body>
+    </body>
+    <body name="rl_steering_wheel_link" pos="-0.25 0.19 0.22">
+      <inertial pos="-0.00017093 6.1255e-08 0.043678" quat="-0.020441 0.705442 0.0205219 0.708176" mass="1" diaginertia="0.0104651 0.006363 0.00636264"/>
+      <!-- <joint name="rl_steering_joint" pos="0 0 0" axis="0 0 -1" range="-2.1 2.1" actuatorfrcrange="-5 5"/> -->
+      <geom pos="-0.241 -0.11 0.155" quat="0.000563312 0.000562864 0.706825 0.707388" type="mesh" class="visual" density="0" rgba="0.79216 0.81961 0.93333 1" mesh="ranger_mini_v3_wheel_right"/>
+      <geom class="collision" size="0.001 0.0005" type="cylinder" rgba="0.79216 0.81961 0.93333 1"/>
+      <body name="rl_wheel_link" pos="0 0 -0.12">
+        <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="8" diaginertia="0.0324 0.02047 0.02047"/>
+        <!-- <joint name="rl_wheel" pos="0 0 0" axis="0 1 0"/> -->
+        <geom size="0.01 0.005" quat="0.707388 0.706825 0 0" type="cylinder" class="visual" density="0"/>
+        <geom class="collision" size="0.09 0.04" pos="0.005 0.005 -0.005" quat="0.707388 0.706825 0 0" type="cylinder"/>
+      </body>
+    </body>
+    <body name="rr_steering_wheel_link" pos="-0.23 -0.206 0.22">
+      <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01"/>
+      <!-- <joint name="rr_steering_joint" pos="0 0 0" axis="0 0 -1" range="-2.1 2.1" actuatorfrcrange="-5 5"/> -->
+      <geom pos="-0.262 -0.095 0.155" quat="0.000563312 0.000562864 0.706825 0.707388" type="mesh" class="visual" density="0" mesh="ranger_mini_v3_wheel_right"/>
+      <geom class="collision" size="0.001 0.0005" type="cylinder"/>
+      <body name="rr_wheel_link" pos="0 0 -0.12">
+        <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="8" diaginertia="0.0324 0.02047 0.02047"/>
+        <!-- <joint name="rr_wheel" pos="0 0 0" axis="0 1 0"/> -->
+        <geom size="0.01 0.005" quat="0.707388 0.706825 0 0" type="cylinder" class="visual" density="0"/>
+        <geom class="collision" size="0.09 0.04" pos="-0.015 0.02 -0.005" quat="0.707388 0.706825 0 0" type="cylinder"/>
+      </body>
+    </body>
+    <body name="lift_Link" pos="0.2183 0 1.432" quat="0.000796327 1 0 0">
+      <inertial pos="0.0786656 -2.35928e-05 0.00121457" quat="0.706942 0.70681 -0.0180823 0.0180458" mass="2.1684" diaginertia="0.058429 0.0563871 0.00430119"/>
+      <joint name="lift_joint" pos="0 0 0" axis="0 0 -1" type="slide" range="-0.72526 0"/>
+      <geom type="mesh" class="visual" density="0" rgba="0.79216 0.81961 0.93333 1" mesh="lift_Link"/>
+      <geom class="collision" rgba="0.79216 0.81961 0.93333 1" mesh="lift_Link"/>
+      <geom pos="0.08 -0.126 0.025" quat="-4.21989e-06 -5.38628e-05 -0.895031 0.446005" type="mesh" class="visual" density="0" rgba="1 1 1 1" mesh="arm_link"/>
+      <geom pos="0.08 -0.126 0.025" quat="-4.21989e-06 -5.38628e-05 -0.895031 0.446005" rgba="1 1 1 1" class="collision" mesh="arm_link"/>
+      <geom pos="0.08 0.126 0.025" quat="-4.21989e-06 5.38628e-05 -0.895031 -0.446005" type="mesh" class="visual" density="0" rgba="1 1 1 1" mesh="arm_link"/>
+      <geom pos="0.08 0.126 0.025" quat="-4.21989e-06 5.38628e-05 -0.895031 -0.446005" rgba="1 1 1 1" class="collision" mesh="arm_link"/>
+      <body name="left_Link1" pos="0.0799903 -0.318009 -0.119819" quat="-4.21989e-06 -5.38628e-05 -0.895031 0.446005">
+        <inertial pos="1.22263e-08 0.021108 -0.0251854" quat="0.988851 -0.148906 -2.80074e-05 -0.000243475" mass="0.593563" diaginertia="0.00126614 0.00124677 0.000496264"/>
+        <joint name="left_joint1" pos="0 0 0" axis="0 0 1" range="-3.1 3.1" actuatorfrcrange="-60 60"/>
+        <geom type="mesh" class="visual" density="0" rgba="1 1 1 1" mesh="link1"/>
+        <geom class="collision" rgba="1 1 1 1" mesh="link1"/>
+        <body name="left_Link2" quat="0.499998 0.5 -0.5 0.500002">
+          <inertial pos="0.152256 4.75384e-07 -0.0062026" quat="1.2834e-05 0.785787 1.90512e-05 0.618497" mass="0.864175" diaginertia="0.00735632 0.00733754 0.000513875"/>
+          <joint name="left_joint2" pos="0 0 0" axis="0 0 1" range="-2.268 2.268" actuatorfrcrange="-60 60"/>
+          <geom type="mesh" class="visual" density="0" rgba="1 1 1 1" mesh="link2"/>
+          <geom class="collision" rgba="1 1 1 1" mesh="link2"/>
+          <body name="left_Link3" pos="0.256 0 0" quat="0.707105 0 0 0.707108">
+            <inertial pos="5.05313e-06 -0.0595926 0.0105691" quat="0.424678 0.56496 -0.565554 0.424992" mass="0.289634" diaginertia="0.00065604 0.000637371 0.000114622"/>
+            <joint name="left_joint3" pos="0 0 0" axis="0 0 1" range="-2.355 2.355" actuatorfrcrange="-30 30"/>
+            <geom type="mesh" class="visual" density="0" rgba="1 1 1 1" mesh="link3"/>
+            <geom class="collision" rgba="1 1 1 1" mesh="link3"/>
+            <body name="left_Link4" pos="0 -0.21 0" quat="0.707105 0.707108 0 0">
+              <inertial pos="1.15517e-06 -0.0180424 -0.0215395" quat="0.990405 0.138195 -7.01319e-06 0.000110532" mass="0.23942" diaginertia="0.000285939 0.000275318 0.000107298"/>
+              <joint name="left_joint4" pos="0 0 0" axis="0 0 1" range="-3.1 3.1" actuatorfrcrange="-10 10"/>
+              <geom type="mesh" class="visual" density="0" rgba="1 1 1 1" mesh="link4"/>
+              <geom class="collision" rgba="1 1 1 1" mesh="link4"/>
+              <body name="left_Link5" quat="0.707105 -0.707108 0 0">
+                <inertial pos="3.19795e-06 -0.0593808 0.00736804" quat="0.419765 0.568659 -0.5692 0.420041" mass="0.2188" diaginertia="0.000358615 0.00035054 8.07958e-05"/>
+                <joint name="left_joint5" pos="0 0 0" axis="0 0 1" range="-2.233 2.233" actuatorfrcrange="-10 10"/>
+                <geom type="mesh" class="visual" density="0" rgba="1 1 1 1" mesh="link5"/>
+                <geom class="collision" rgba="1 1 1 1" mesh="link5"/>
+                <body name="left_Link6" pos="0 -0.144 0" quat="0.707105 0.707108 0 0">
+                  <inertial pos="5.43774e-05 -0.0511013 0.0165732" quat="0.816093 0.577917 -0.00177298 -0.000173412" mass="0.2" diaginertia="0.00217473 0.00213695 0.000909438"/>
+                  <joint name="left_joint6" pos="0 0 0" axis="0 0 1" range="-6.28 6.28" actuatorfrcrange="-10 10"/>
+                  <geom type="mesh" class="visual" density="0" rgba="1 1 1 1" mesh="link6"/>
+                  <geom class="collision" rgba="1 1 1 1" mesh="link6"/>
+                  <geom pos="2.84526e-07 -0.07746 0.02539" quat="-1.83196e-06 4.81634e-05 8.8457e-11 1" type="mesh" class="visual" density="0" mesh="realsense"/>
+                  <geom class="collision" size="0.012525 0.045 0.0125" pos="2.84526e-07 -0.07746 0.02539" quat="0.500023 0.499977 -0.499975 0.500025" type="box"/>
+                  <body pos="0 0 0.003" quat="1 0 0 0" name="left_gripper">
+                    <attach model="gripper" body="base_mount" prefix="lg"/>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="right_Link1" pos="0.0799903 0.318009 -0.119819" quat="-4.21989e-06 5.38628e-05 -0.895031 -0.446005">
+        <inertial pos="1.22263e-08 0.021108 -0.0251854" quat="0.988851 -0.148906 -2.80074e-05 -0.000243475" mass="0.593563" diaginertia="0.00126614 0.00124677 0.000496264"/>
+        <joint name="right_joint1" pos="0 0 0" axis="0 0 1" range="-3.1 3.1" actuatorfrcrange="-60 60"/>
+        <geom type="mesh" class="visual" density="0" rgba="1 1 1 1" mesh="link1"/>
+        <geom class="collision" rgba="1 1 1 1" mesh="link1"/>
+        <body name="right_Link2" quat="0.499998 0.5 -0.5 0.500002">
+          <inertial pos="0.152256 4.75384e-07 -0.0062026" quat="1.2834e-05 0.785787 1.90512e-05 0.618497" mass="0.864175" diaginertia="0.00735632 0.00733754 0.000513875"/>
+          <joint name="right_joint2" pos="0 0 0" axis="0 0 1" range="-2.268 2.268" actuatorfrcrange="-60 60"/>
+          <geom type="mesh" class="visual" density="0" rgba="1 1 1 1" mesh="link2"/>
+          <geom class="collision" rgba="1 1 1 1" mesh="link2"/>
+          <body name="right_Link3" pos="0.256 0 0" quat="0.707105 0 0 0.707108">
+            <inertial pos="5.05313e-06 -0.0595926 0.0105691" quat="0.424678 0.56496 -0.565554 0.424992" mass="0.289634" diaginertia="0.00065604 0.000637371 0.000114622"/>
+            <joint name="right_joint3" pos="0 0 0" axis="0 0 1" range="-2.355 2.355" actuatorfrcrange="-30 30"/>
+            <geom type="mesh" class="visual" density="0" rgba="1 1 1 1" mesh="link3"/>
+            <geom class="collision" rgba="1 1 1 1" mesh="link3"/>
+            <body name="right_Link4" pos="0 -0.21 0" quat="0.707105 0.707108 0 0">
+              <inertial pos="1.15517e-06 -0.0180424 -0.0215395" quat="0.990405 0.138195 -7.01319e-06 0.000110532" mass="0.23942" diaginertia="0.000285939 0.000275318 0.000107298"/>
+              <joint name="right_joint4" pos="0 0 0" axis="0 0 1" range="-3.1 3.1" actuatorfrcrange="-10 10"/>
+              <geom type="mesh" class="visual" density="0" rgba="1 1 1 1" mesh="link4"/>
+              <geom class="collision" rgba="1 1 1 1" mesh="link4"/>
+              <body name="right_Link5" quat="0.707105 -0.707108 0 0">
+                <inertial pos="3.19795e-06 -0.0593808 0.00736804" quat="0.419765 0.568659 -0.5692 0.420041" mass="0.2188" diaginertia="0.000358615 0.00035054 8.07958e-05"/>
+                <joint name="right_joint5" pos="0 0 0" axis="0 0 1" range="-2.233 2.233" actuatorfrcrange="-10 10"/>
+                <geom type="mesh" class="visual" density="0" rgba="1 1 1 1" mesh="link5"/>
+                <geom class="collision" rgba="1 1 1 1" mesh="link5"/>
+                <body name="right_Link6" pos="0 -0.144 0" quat="0.707105 0.707108 0 0">
+                  <inertial pos="5.43774e-05 0.0510411 0.0165732" quat="0.578033 0.81593 -0.00916458 0.00717963" mass="0.2" diaginertia="0.00218 0.00214255 0.000909089"/>
+                  <joint name="right_joint6" pos="0 0 0" axis="0 0 1" range="-6.28 6.28" actuatorfrcrange="-10 10"/>
+                  <geom type="mesh" class="visual" density="0" rgba="1 1 1 1" mesh="link6"/>
+                  <geom class="collision" rgba="1 1 1 1" mesh="link6"/>
+                  <geom pos="2.84526e-07 0.07746 0.02539" quat="1 -8.8457e-11 -4.81634e-05 -1.84124e-06" type="mesh" class="visual" density="0" mesh="realsense"/>
+                  <geom class="collision" size="0.012525 0.045 0.0125" pos="2.84526e-07 0.07746 0.02539" quat="0.500023 -0.499977 -0.499975 -0.500025" type="box"/>
+                  <body pos="0 0 0.003" quat="1 0 0 0" name="right_gripper">
+                    <attach model="gripper" body="base_mount" prefix="rg"/>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="pan_tilt_yaw_link" pos="0.1683 0 1.585">
+      <joint name="pan_tilt_yaw_joint" pos="0 0 0" axis="0 0 1" range="-1.0472 1.0472"/>
+      <geom quat="0.707105 0 0 -0.707108" type="mesh" class="visual" rgba="0.2 0.2 0.2 1" mesh="yaw"/>
+      <body name="pan_tilt_pitch_link" pos="0 0 0.062">
+        <joint name="pan_tilt_pitch_joint" pos="0 0 0" axis="0 1 0" range="-1.0472 1.0472"/>
+        <geom quat="0.707105 0 0 -0.707108" type="mesh" class="visual" rgba="0.2 0.2 0.2 1" mesh="pitch"/>
+        <geom pos="0.035 0 0.0455" quat="0.500048 0.5 0.499952 0.5" type="mesh" class="visual" mesh="realsense"/>
+        <geom class="collision" size="0.012525 0.045 0.0125" pos="0.035 0 0.0455" type="box"/>
+      </body>
+    </body>
+  </worldbody>
+
+    <actuator>
+        <position name="lift" ctrllimited="true" joint="lift_joint" ctrlrange=" -0.72526 0" kp="3000" dampratio="1"/>
+
+        <position name="left_j1" ctrllimited="true" joint="left_joint1" ctrlrange="-3.1 3.1" class="position"/>
+        <position name="left_j2" ctrllimited="true" joint="left_joint2" ctrlrange="-2.268 2.268" class="position"/>
+        <position name="left_j3" ctrllimited="true" joint="left_joint3" ctrlrange="-2.355 2.355" class="position_mid"/>
+        <position name="left_j4" ctrllimited="true" joint="left_joint4" ctrlrange="-3.1 3.1" class="position_small"/>
+        <position name="left_j5" ctrllimited="true" joint="left_joint5" ctrlrange="-2.233 2.233" class="position_small"/>
+        <position name="left_j6" ctrllimited="true" joint="left_joint6" ctrlrange="-6.28 6.28" class="position_small"/>
+
+        <position name="right_j1" ctrllimited="true" joint="right_joint1" ctrlrange="-3.1 3.1" class="position"/>
+        <position name="right_j2" ctrllimited="true" joint="right_joint2" ctrlrange="-2.268 2.268" class="position"/>
+        <position name="right_j3" ctrllimited="true" joint="right_joint3" ctrlrange="-2.355 2.355" class="position_mid"/>
+        <position name="right_j4" ctrllimited="true" joint="right_joint4" ctrlrange="-3.1 3.1" class="position_small"/>
+        <position name="right_j5" ctrllimited="true" joint="right_joint5" ctrlrange="-2.233 2.233" class="position_small"/>
+        <position name="right_j6" ctrllimited="true" joint="right_joint6" ctrlrange="-6.28 6.28" class="position_small"/>
+
+    </actuator>
+</mujoco>

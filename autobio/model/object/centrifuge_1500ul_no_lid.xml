@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="centrifuge_1500ul_no_lid">
+  <compiler angle="radian" meshdir="../../assets" />
+
+  <asset>
+    <mesh name="obj:centrifuge_1500ul_no_lid-visual" file="container/centrifuge_1500ul_no_lid_vis.obj" scale="0.001 0.001 0.001" />
+  </asset>
+
+  <worldbody>
+    <body name="centrifuge_1500ul_no_lid">
+      <geom type="mesh" mesh="centrifuge_1500ul_no_lid-visual:" />
+      <!-- Gernerated with tube(0.0107 / 2, 0.0097 / 2, 0.040, 0.039, 16) -->
+      <geom type="cylinder" size="0.00535 0.0005000000000000004" pos="0 0 0.0005000000000000004" group="3" />
+      <replicate count="16" euler="0 0 -0.39269908169872414">
+        <geom type="box" size="0.001043733222786286 0.0002451963201008074 0.0195" pos="0 0.005002004930056475 0.0205" group="3" />
+      </replicate>
+      <!-- End of generated code -->
+    </body>
+  </worldbody>
+</mujoco>

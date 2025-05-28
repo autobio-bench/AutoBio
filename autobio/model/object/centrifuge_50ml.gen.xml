@@ -1,0 +1,63 @@
+<mujoco model="centrifuge_50ml">
+  <compiler angle="radian" meshdir="../../assets/"/>
+
+  <asset>
+    <mesh name="centrifuge_50ml-visual_visual" file="container/centrifuge_50ml_vis/visual.obj" scale="0.001 0.001 0.001"/>
+    <material name="centrifuge_50ml" rgba="1 1 1 0.2" />
+  </asset>
+
+  <worldbody>
+    <body name="centrifuge_50ml">
+      <geom size="0.0145 0.0008" pos="0 0 0.0008" type="cylinder" group="3"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="2" mesh="centrifuge_50ml-visual_visual" material="centrifuge_50ml"/>
+      <frame>
+        <geom size="0.00282881 0.000539432 0.0565" pos="0 0.013682 0.0581" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.00282881 0.000539432 0.0565" pos="0.00523586 0.0126405 0.0581" quat="0.980785 0 0 -0.19509" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.00282881 0.000539432 0.0565" pos="0.0096746 0.0096746 0.0581" quat="0.92388 0 0 -0.382683" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.00282881 0.000539432 0.0565" pos="0.0126405 0.00523586 0.0581" quat="0.83147 0 0 -0.55557" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.00282881 0.000539432 0.0565" pos="0.013682 0 0.0581" quat="0.707107 0 0 -0.707107" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.00282881 0.000539432 0.0565" pos="0.0126405 -0.00523586 0.0581" quat="0.55557 0 0 -0.83147" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.00282881 0.000539432 0.0565" pos="0.0096746 -0.0096746 0.0581" quat="0.382683 0 0 -0.92388" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.00282881 0.000539432 0.0565" pos="0.00523586 -0.0126405 0.0581" quat="0.19509 0 0 -0.980785" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.00282881 0.000539432 0.0565" pos="0 -0.013682 0.0581" quat="0 0 0 -1" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.00282881 0.000539432 0.0565" pos="-0.00523586 -0.0126405 0.0581" quat="-0.19509 0 0 -0.980785" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.00282881 0.000539432 0.0565" pos="-0.0096746 -0.0096746 0.0581" quat="-0.382683 0 0 -0.92388" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.00282881 0.000539432 0.0565" pos="-0.0126405 -0.00523586 0.0581" quat="-0.55557 0 0 -0.83147" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.00282881 0.000539432 0.0565" pos="-0.013682 0 0.0581" quat="-0.707107 0 0 -0.707107" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.00282881 0.000539432 0.0565" pos="-0.0126405 0.00523586 0.0581" quat="-0.83147 0 0 -0.55557" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.00282881 0.000539432 0.0565" pos="-0.0096746 0.0096746 0.0581" quat="-0.92388 0 0 -0.382683" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.00282881 0.000539432 0.0565" pos="-0.00523586 0.0126405 0.0581" quat="-0.980785 0 0 -0.19509" type="box" group="3"/>
+      </frame>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,49 @@
+<mujoco model="pipette manipulation">
+
+    <option integrator="implicitfast" impratio="10" cone="elliptic" noslip_iterations="2">
+        <flag multiccd="enable"/>    
+    </option>
+    <visual>
+        <!-- <rgba haze="0.45 0.45 0.45 1"/> -->
+        <!-- <quality shadowsize="8192"/> -->
+        <global azimuth="220" elevation="-30" offwidth="1280" offheight="960"/>
+    </visual>
+
+    <asset>
+        <!-- <texture type="skybox" builtin="flat" rgb1="0.6 0.6 0.6" rgb2="0 0 0" width="512" height="3072"/> -->
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+        <!-- <texture type="skybox" builtin="gradient" rgb1="1.0 1.0 1.0" rgb2="1.0 1.0 1.0" width="512" height="3072"/> -->
+        <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.6 0.7 0.8" rgb2="0.4 0.5 0.6" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+        <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5"/>
+        <!-- <material name="plain_floor" rgba="0.6 0.7 0.8 1" /> -->
+        <model name="table" file="../misc/simple_table.xml" content_type="text/xml" />
+        <model name="dexhandbot" file="../robot/ur5e_dexhand021_right.xml" content_type="text/xml" />
+        <model name="ur5e" file="../robot/ur5e_gripper.xml" content_type="text/xml" />
+        <model name="centrifuge_10slot" file="../object/centrifuge_10slot.gen.xml" content_type="text/xml" />
+        <model name="centrifuge_50ml" file="../object/centrifuge_50ml_screw.xml" content_type="text/xml" />
+    </asset>
+
+    <worldbody>
+        <light directional="true" diffuse="0.8 0.8 0.8" ambient="0.2 0.2 0.2" pos="0 0 5" dir="0 0 -1"/>
+        <geom name="floor" pos="0 0 0" size="2.5 2 0.05" type="plane" material="groundplane"/>
+        <body name="table3" pos="0 0 0." quat="1 0 0 1">
+            <camera name="table_cam_front" pos="0. -1.2 1.35" quat="0.819 0.574 0 0" fovy="45" resolution="1280 960"/>
+            <camera name="table_cam_left" pos="-1.2 0. 1.65" quat="0.579 0.406 -0.406 -0.579" fovy="45" resolution="1280 960"/>
+            <attach model="table" body="vention table" prefix="/"/>
+            <body name="1/ur5e:" pos="-0.5 0.0 0.824" quat="0 0 0 1">
+                <attach model="dexhandbot" body="world" prefix="1/ur:"/>
+            </body>
+            <body name="2/ur5e:" pos="0.5 0.2 0.824" quat="0 0 0 1" >
+                <attach model="ur5e" body="world" prefix="2/ur:"/>
+            </body>
+            <body name="slot1" pos="0.0 0.0 0.854" quat="1 0 0 1">
+                <attach model="centrifuge_10slot" body="centrifuge_10slot" prefix="3/"/>
+            </body>
+        </body>
+        <body name="centrifuge_50ml_body" pos="-0.072 -0.018 0.829" quat="1 0 0 0">
+            <site name="origin1" pos="0 0 0.01234" size="0.005" rgba="1 0 0 1" group="3"/>
+            <attach model="centrifuge_50ml" body="centrifuge_50ml_screw_body" prefix="5/"/>
+            <joint name="centrifuge_50ml_body" type="free"/>
+        </body>
+    </worldbody>
+</mujoco>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="dexhand021_right_sim">
+  <compiler angle="radian" meshdir="../assets" texturedir="../assets" />
+  <size nkey="5"/>
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+  </visual>
+
+  <option
+    timestep="0.001" integrator="implicitfast"
+    noslip_iterations="3"
+    cone="elliptic" impratio="10"
+    gravity="0 0 0"
+  />
+  <asset>
+    <model name="dexhand" file="../hand/dexhand021_right.xml" content_type="text/xml" />
+    <model name="pipette" file="../object/pipette.gen.xml" content_type="text/xml" />
+  </asset>
+  <worldbody>
+    <body name="robot">
+      <freejoint name="robot"/>
+      <attach model="dexhand" body="rh_base" prefix="dh"/>
+    </body>
+
+    <body name='object' pos="0 0 -0.12" quat="0 0 0 1">
+      <!-- <geom type="cylinder" size="0.015 0.1" rgba="0.5 0.5 0.5 1" group="1" contype="0" conaffinity="0" density="0" />
+      <geom type="cylinder" size="0.015 0.1" rgba="0.5 0.5 0.5 1" group="3" /> -->
+      <attach model="pipette" body="pipette" prefix="ob" />
+    </body>
+  </worldbody>
+</mujoco>

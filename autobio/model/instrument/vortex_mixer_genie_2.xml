@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="vortex_mixer_genie_2">
+  <compiler angle="radian" autolimits="true" assetdir="../../assets" />
+  <default>
+    <default class="visual">
+      <geom type="mesh" contype="0" conaffinity="0" density="0" group="2" />
+      <mesh inertia="shell" />
+    </default>
+    <default class="inertia">
+      <geom type="mesh" contype="0" conaffinity="0" group="5" />
+      <mesh inertia="exact" />
+    </default>
+    <default class="collision">
+      <geom type="mesh" contype="0" conaffinity="1" density="0" group="3" />
+    </default>
+  </default>
+  <option gravity="0 0 0" timestep="0.001" />
+  <asset>
+    <mesh class="visual" name="body-visual-0" file="instrument/vortex_mixer_genie_2/body-visual-0.obj" />
+    <material name="body-0" rgba="0.14509804 0.34117647 0.48627451 1" metallic="0.0" roughness="1.0" />
+    <mesh class="visual" name="body-visual-1" file="instrument/vortex_mixer_genie_2/body-visual-1.obj" />
+    <texture name="body-0" type="2d" file="instrument/vortex_mixer_genie_2/body-0.png" />
+    <material name="body-1" rgba="1 1 1 1" metallic="0.0" roughness="1.0" texture="body-0" />
+    <mesh class="visual" name="body-visual-2" file="instrument/vortex_mixer_genie_2/body-visual-2.obj" />
+    <material name="body-2" rgba="0 0 0 1" metallic="0.0" roughness="1.0" />
+    <mesh class="inertia" name="body-inertia" file="instrument/vortex_mixer_genie_2/body-inertia.obj" />
+    <mesh class="collision" name="body-collision-0" file="instrument/vortex_mixer_genie_2/body-collision-0.obj" />
+    <mesh class="visual" name="platform-visual-0" file="instrument/vortex_mixer_genie_2/platform-visual-0.obj" />
+    <material name="platform-0" rgba="0.101961 0.101961 0.101961 1" metallic="0.0" roughness="1.0" />
+    <mesh class="inertia" name="platform-inertia" file="instrument/vortex_mixer_genie_2/platform-inertia.obj" />
+    <mesh class="visual" name="switch-visual-0" file="instrument/vortex_mixer_genie_2/switch-visual-0.obj" />
+    <material name="switch-0" rgba="1 1 1 1" metallic="0.0" roughness="1.0" />
+    <mesh class="inertia" name="switch-inertia" file="instrument/vortex_mixer_genie_2/switch-inertia.obj" />
+    <mesh class="visual" name="knob-visual-0" file="instrument/vortex_mixer_genie_2/knob-visual-0.obj" />
+    <material name="knob-0" rgba="0.101961 0.101961 0.101961 1" metallic="0.0" roughness="1.0" />
+    <mesh class="inertia" name="knob-inertia" file="instrument/vortex_mixer_genie_2/knob-inertia.obj" />
+    <mesh class="collision" name="knob-collision-0" file="instrument/vortex_mixer_genie_2/knob-collision-0.obj" />
+  </asset>
+  <extension>
+    <plugin plugin="mjlab.passive.detent">
+      <instance name="detent" />
+    </plugin>
+  </extension>
+  <worldbody>
+    <body name="body" pos="0 0 0.02904675" quat="1 0 0 0">
+      <geom class="visual" mesh="body-visual-0" material="body-0" />
+      <geom class="visual" mesh="body-visual-1" material="body-1" />
+      <geom class="visual" mesh="body-visual-2" material="body-2" />
+      <geom class="inertia" mesh="body-inertia" density="1000" />
+      <geom class="collision" mesh="body-collision-0" />
+      <body name="platform" pos="0.00000299 0.01518481 0.03284156" quat="1 0 0 0">
+        <joint name="platform/pivot" type="hinge" pos="0.00000001 0.02874511 0.07022548" axis="0 0 1" damping="0.01" armature="0.1" />
+        <frame name="platform" pos="0 -0.002 0">
+          <joint name="platform/orbit" type="hinge" pos="0.00000001 0.02874511 0.07022548" axis="0 0 1" />
+          <geom class="visual" mesh="platform-visual-0" material="platform-0" />
+          <geom class="inertia" mesh="platform-inertia" density="1000" />
+          <geom class="collision" type="cylinder" size="0.0281749 0.00734048" pos="-0.00009476 0.02883801 0.0774371" />
+          <geom class="collision" type="cylinder" size="0.04139786 0.00563025" pos="-0.00000001 0.02874491 0.08994599" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="0.00000001 -0.00376545 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="-0.00841435 -0.00265768 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="-0.01625527 0.00059014 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="-0.02298843 0.00575667 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="-0.02815497 0.01248983 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="-0.03140278 0.02033076 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="-0.03251055 0.02874511 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="-0.03140279 0.03715946 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="-0.02815497 0.04500039 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="-0.02298843 0.05173354 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="-0.01625527 0.05690008 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="-0.00841435 0.0601479 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="0.00000001 0.06125567 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="0.00841436 0.0601479 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="0.01625529 0.05690008 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="0.02298844 0.05173354 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="0.02815498 0.04500039 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="0.03140279 0.03715946 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="0.03251056 0.02874511 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="0.03140279 0.02033076 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="0.02815498 0.01248983 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="0.02298844 0.00575667 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="0.01625529 0.00059014 0.09557489" />
+          <geom class="collision" type="sphere" size="0.0036043" pos="0.00841436 -0.00265768 0.09557489" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.00000001 0.00535039 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="-0.01169735 0.00848468 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="-0.02026042 0.01704775 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="-0.02339472 0.02874511 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="-0.02026042 0.04044247 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="-0.01169735 0.04900553 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.00000001 0.05213983 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.01169736 0.04900553 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.02026043 0.04044247 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.02339472 0.02874511 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.02026043 0.01704775 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.01169736 0.00848468 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.00000001 0.01416659 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="-0.00728925 0.01611974 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="-0.01262536 0.02145585 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="-0.01457851 0.02874511 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="-0.01262536 0.03603436 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="-0.00728925 0.04137047 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.00000001 0.04332362 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.00728926 0.04137047 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.01262537 0.03603436 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.01457852 0.02874511 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.01262537 0.02145585 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.00728926 0.01611974 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.00000001 0.02319411 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="-0.0048073 0.02596961 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="-0.0048073 0.03152061 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.00000001 0.03429611 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.00480731 0.03152061 0.09557321" />
+          <geom class="collision" type="sphere" size="0.00241874" pos="0.00480731 0.02596961 0.09557321" />
+          <site name="platform-function" group="3" pos="-0 0.02876459 0.09573353" size="0.005 0.005 0.005" />
+        </frame>
+      </body>
+      <body name="switch" pos="-0.05384409 -0.02809945 0.00935715" quat="-0 0 0.85315633 -0.52165533">
+        <joint name="switch" type="hinge" pos="-0.02193041 -0.04410421 0.03201248" axis="1 0 0" range="-0.4 0.4" springdamper="0.05 1" armature="0.0001" user="3" />
+        <plugin instance="detent" />
+        <geom class="visual" mesh="switch-visual-0" material="switch-0" />
+        <geom class="inertia" mesh="switch-inertia" density="1000" />
+        <geom class="collision" type="cylinder" size="0.002632 0.00943067" pos="-0.02070718 -0.04991252 0.03503589" quat="0.85512933 0.51841433 -0.00064119 0" />
+        <site name="switch-function" group="3" pos="-0.0207447 -0.05650076 0.03829843" quat="0.97257445 -0.23259179 -0 -0" size="0.005 0.005 0.005" />
+      </body>
+      <body name="knob" pos="0.01693642 -0.02179721 0.02349023" quat="0.68038146 -0.00000007 0.65002891 -0.33844273">
+        <joint name="knob" type="hinge" pos="0.01494261 -0.03978327 0.03040753" axis="-0.00000022 0.88697783 -0.461812" range="0 4.6" springdamper="0.05 1" armature="0.0001" user="11" />
+        <plugin instance="detent" />
+        <geom class="visual" mesh="knob-visual-0" material="knob-0" />
+        <geom class="inertia" mesh="knob-inertia" density="1000" />
+        <geom class="collision" mesh="knob-collision-0" />
+        <site name="knob-function" group="3" pos="0.01475791 -0.05143099 0.03734695" quat="0.79473194 0.48229501 0.19113432 -0.3150561" size="0.05 0.05 0.05" />
+      </body>
+    </body>
+  </worldbody>
+  <equality>
+    <joint name="platform" joint1="platform/orbit" joint2="platform/pivot" polycoef="0 -1" />
+  </equality>
+  <actuator>
+    <velocity name="platform/pivot" joint="platform/pivot" kv="1" ctrlrange="0 400" />
+  </actuator>
+</mujoco>

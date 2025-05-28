@@ -1,0 +1,71 @@
+<mujoco model="pcr_plate_96well">
+  <compiler angle="radian" meshdir="../../assets/"/>
+
+  <asset>
+    <mesh name="pcr_plate_96well-visual_visual" file="container/pcr_plate_96well_vis/visual.obj" scale="0.001 0.001 0.001"/>
+  </asset>
+
+  <worldbody>
+    <body name="pcr_plate_96well">
+      <geom size="0.06 0.00305 0.0101" pos="0 0.03695 0" type="box" group="3"/>
+      <geom size="0.06 0.00305 0.0101" pos="0 -0.03695 0" type="box" group="3"/>
+      <geom size="0.00405 0.04 0.0101" pos="0.05595 0 0" type="box" group="3"/>
+      <geom size="0.00405 0.04 0.0101" pos="-0.05595 0 0" type="box" group="3"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="2" mesh="pcr_plate_96well-visual_visual"/>
+      <frame>
+        <geom size="0.0021 0.0339 0.0101" pos="-0.045 0 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0021 0.0339 0.0101" pos="-0.036 0 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0021 0.0339 0.0101" pos="-0.027 0 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0021 0.0339 0.0101" pos="-0.018 0 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0021 0.0339 0.0101" pos="-0.009 0 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0021 0.0339 0.0101" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0021 0.0339 0.0101" pos="0.009 0 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0021 0.0339 0.0101" pos="0.018 0 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0021 0.0339 0.0101" pos="0.027 0 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0021 0.0339 0.0101" pos="0.036 0 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0021 0.0339 0.0101" pos="0.045 0 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0519 0.0021 0.0101" pos="0 -0.027 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0519 0.0021 0.0101" pos="0 -0.018 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0519 0.0021 0.0101" pos="0 -0.009 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0519 0.0021 0.0101" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0519 0.0021 0.0101" pos="0 0.009 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0519 0.0021 0.0101" pos="0 0.018 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.0519 0.0021 0.0101" pos="0 0.027 0" type="box" group="3"/>
+      </frame>
+    </body>
+  </worldbody>
+</mujoco>

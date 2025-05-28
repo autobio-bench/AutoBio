@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="centrifuge_1-5ml_screw">
+  <compiler angle="radian" meshdir="../../assets" />
+
+  <option integrator="implicitfast" impratio="1" cone="elliptic" noslip_iterations="2" />
+
+  <asset>
+    <mesh name="centrifuge_1-5ml_screw_body-visual" file="container/centrifuge_1-5ml_screw_vis/centrifuge_1-5ml_screw_body.STL" scale="0.001 0.001 0.001"/>
+    <mesh name="centrifuge_1-5ml_screw_cap-visual" file="container/centrifuge_1-5ml_screw_vis/centrifuge_1-5ml_screw_cap.STL" scale="0.001 0.001 0.001"/>
+  </asset>
+
+  <visual>
+        <global azimuth="220" elevation="0"/>
+  </visual>
+
+  <worldbody>
+    <body name="centrifuge_1-5ml_screw_body">
+      <geom type="mesh" group="2" density="0" contype="0" conaffinity="0" mesh="centrifuge_1-5ml_screw_body-visual" rgba="1 1 1 0.2" />
+      <geom type="cylinder" size="0.00535 0.0002950000000000001" pos="0 0 0.0002950000000000001" group="3" />
+      <geom name="body_cyl" type="cylinder" size="0.00525 0.02129728" pos="0 0 0.02129728" group="3" />
+    </body>
+
+    <body name="centrifuge_1-5ml_screw_cap" pos="0 0 0.04455" euler="3.1415926535 0 0">
+      <geom type="mesh" group="2" density="0" contype="0" conaffinity="0" mesh="centrifuge_1-5ml_screw_cap-visual" rgba="0.9294 0.2706 0.0627 1" /> 
+      <geom type="cylinder" size="0.0075 0.001" pos="0 0 0.001" group="3" />
+      <geom name="cap_cyl" type="cylinder" size="0.0068 0.00428" pos="0 0 0.00428" group="3" />
+    </body>
+
+  </worldbody>
+</mujoco>

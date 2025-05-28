@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<?xml-model href="https://raw.githubusercontent.com/ronansgd/xml-schema-mjcf/refs/heads/main/mujoco.xsd"?>
+
+<mujoco model="gallery">
+  <compiler angle="radian" meshdir="../../assets"/>
+  <option gravity="0 0 0" />
+
+  <asset>
+    <!-- <model name="dexhand021_right" file="../hand/dexhand021_right.xml" content_type="text/xml" />
+    <model name="2f85" file="../robot/2f85.xml" content_type="text/xml" /> -->
+
+    <model name="ur5e_dexhand021_right" file="../robot/ur5e_dexhand021_right.xml" content_type="text/xml" />
+    <model name="ur5e_gripper" file="../robot/ur5e_gripper.xml" content_type="text/xml" />
+    <model name="aloha" file="../robot/aloha_left.xml" content_type="text/xml" />
+
+    <model name="pipette" file="../object/pipette.gen.xml" content_type="text/xml" />
+    <model name="pipette_rack" file="../object/pipette_rack.gen.xml" content_type="text/xml" />
+    <model name="pcr_plate_96well" file="../object/pcr_plate_96well.gen.xml" content_type="text/xml" />
+    <model name="centrifuge_plate_60well" file="../object/centrifuge_plate_60well.gen.xml" content_type="text/xml" />
+    <model name="centrifuge_10slot" file="../object/centrifuge_10slot.gen.xml" content_type="text/xml" />
+    <!-- <model name="centrifuge_50ml" file="../object/centrifuge_50ml.gen.xml" content_type="text/xml" />
+    <model name="centrifuge_10ml" file="../object/centrifuge_10ml.gen.xml" content_type="text/xml" />
+    <model name="centrifuge_1500ul_no_lid" file="../object/centrifuge_1500ul_no_lid.gen.xml" content_type="text/xml" /> -->
+    <model name="cell_dish_100" file="../object/cell_dish_100.gen.xml" content_type="text/xml" />
+    <model name="tip_box" file="../object/tip_box.gen.xml" content_type="text/xml" />
+    <model name="pipette_tip" file="../object/pipette_tip.gen.xml" content_type="text/xml" />
+    <model name="centrifuge_15ml_screw" file="../object/centrifuge_15ml_screw.xml" content_type="text/xml" />
+    <model name="centrifuge_50ml_screw" file="../object/centrifuge_50ml_screw.xml" content_type="text/xml" />
+    <model name="centrifuge_1-5ml_screw" file="../object/centrifuge_1-5ml_screw.xml" content_type="text/xml" />
+    <model name="cryovial_1-8ml" file="../object/cryovial_1-8ml.xml" content_type="text/xml" />
+
+    <model name="centrifuge_eppendorf_5430" file="../instrument/centrifuge_eppendorf_5430.xml" content_type="text/xml" />
+    <model name="centrifuge_eppendorf_5910_ri" file="../instrument/centrifuge_eppendorf_5910_ri.xml" content_type="text/xml" />
+    <model name="centrifuge_tiangen_tgear_mini" file="../instrument/centrifuge_tiangen_tgear_mini.xml" content_type="text/xml" />
+    <model name="thermal_cycler_biorad_c1000" file="../instrument/thermal_cycler_biorad_c1000.xml" content_type="text/xml" />
+    <model name="thermal_mixer_eppendorf_c" file="../instrument/thermal_mixer_eppendorf_c.xml" content_type="text/xml" />
+    <model name="vortex_mixer_genie_2" file="../instrument/vortex_mixer_genie_2.xml" content_type="text/xml" />
+
+    <model name="table" file="../misc/simple_table.xml" content_type="text/xml" />
+  </asset>
+
+  <worldbody>
+  <frame pos="0 0 0.85">
+    <frame pos="0 0 -0.85">
+      <attach model="table" body="vention table" prefix="/"/>
+    </frame>
+
+    <!-- <frame pos="-0.3 0.2 0">
+      <attach model="dexhand021_right" body="rh_base" prefix="/dh:" />
+    </frame>
+
+    <frame pos="-0.6 0.2 0">
+      <attach model="2f85" body="base_mount" prefix="/2f85:" />
+    </frame> -->
+
+    <frame pos="-0.3 -0.3 0">
+      <attach model="aloha" body="left/base_link" prefix="/aloha:" />
+    </frame>
+
+    <frame pos="-0.3 0 0">
+      <attach model="ur5e_dexhand021_right" body="base" prefix="/ur:"/>
+    </frame>
+
+    <frame pos="0.6 0 0">
+      <attach model="ur5e_gripper" body="base" prefix="1/ur:"/>
+    </frame>
+
+    <frame pos="0 0 0.2" quat="0.707 0 0 0.707">
+      <attach model="pipette" body="pipette" prefix="/" />
+    </frame>
+
+    <frame pos="0.3 0 -0.025" euler="0 0 1.57">
+      <attach model="pipette_rack" body="pipette_rack" prefix="/" />
+    </frame>
+
+    <frame pos="0 -0.1 0">
+      <attach model="centrifuge_10slot" body="centrifuge_10slot" prefix="/" />
+    </frame>
+
+    <frame pos="0.018 -0.064 -0.03">
+      <attach model="centrifuge_15ml_screw" body="centrifuge_15ml_body" prefix="1/"/>
+      <attach model="centrifuge_15ml_screw" body="centrifuge_15ml_cap" prefix="2/"/>
+    </frame>
+
+    <frame pos="0 -0.082 -0.02">
+      <attach model="centrifuge_50ml_screw" body="centrifuge_50ml_screw_body" prefix="3/"/>
+      <attach model="centrifuge_50ml_screw" body="centrifuge_50ml_screw_cap" prefix="4/"/>
+    </frame>
+
+    <frame pos="0.018 -0.03 0.03">
+      <attach model="centrifuge_1-5ml_screw" body="centrifuge_1-5ml_screw_body" prefix="5/"/>
+      <attach model="centrifuge_1-5ml_screw" body="centrifuge_1-5ml_screw_cap" prefix="6/"/>
+    </frame>
+
+    <frame pos="0.038 -0.03 0.03">
+      <attach model="cryovial_1-8ml" body="cryovial_1-8ml_body" prefix="7/"/>
+      <attach model="cryovial_1-8ml" body="cryovial_1-8ml_cap" prefix="8/"/>
+    </frame>
+
+    <frame pos="0 -0.3 0">
+      <attach model="centrifuge_plate_60well" body="centrifuge_plate_60well" prefix="/" />
+    </frame>
+
+    <frame pos="-0.1 0 0">
+      <attach model="pcr_plate_96well" body="pcr_plate_96well" prefix="/" />
+    </frame>
+
+    <!-- <frame pos="0.0 -0.118 -0.022">
+      <attach model="centrifuge_50ml" body="centrifuge_50ml" prefix="/" />
+    </frame>
+
+    <frame pos="0.054 -0.1 -0.022">
+      <attach model="centrifuge_10ml" body="centrifuge_10ml" prefix="/" />
+    </frame>
+
+    <frame pos="0 -0.158 0.052">
+      <attach model="centrifuge_1500ul_no_lid" body="centrifuge_1500ul_no_lid" prefix="/" />
+    </frame> -->
+
+    <frame>
+      <attach model="tip_box" body="tip_box" prefix="/" />
+    </frame>
+
+    <frame pos="-0.02 -0.012 0.04">
+      <attach model="pipette_tip" body="pipette_tip" prefix="/" />
+    </frame>
+
+    <frame pos="0.1 0 -0.02">
+      <attach model="cell_dish_100" body="cell_dish_100" prefix="/" />
+    </frame>
+
+    <frame pos="0.3 -0.3 -0.03">
+      <attach model="vortex_mixer_genie_2" body="world" prefix="/vortex_mixer_genie_2:" />
+    </frame>
+
+  </frame>
+  <frame pos="0 1.5 0.85">
+    <frame pos="0 0 -0.85">
+      <attach model="table" body="vention table" prefix="1/"/>
+    </frame>
+
+    <frame pos="0.35 0.1 -0.03">
+      <attach model="centrifuge_eppendorf_5430" body="world" prefix="/centrifuge_eppendorf_5430:" />
+    </frame>
+
+    <frame pos="-0.3 0 -0.03">
+      <attach model="centrifuge_eppendorf_5910_ri" body="world" prefix="/centrifuge_eppendorf_5910_ri:" />
+    </frame>
+
+    <frame pos="0.35 -0.3 -0.03">
+      <attach model="centrifuge_tiangen_tgear_mini" body="world" prefix="/centrifuge_tiangen_tgear_mini:" />
+    </frame>
+  </frame>
+
+  <frame pos="1.5 0 0.85">
+    <frame pos="0 0 -0.85">
+      <attach model="table" body="vention table" prefix="2/"/>
+    </frame>
+
+    <frame pos="0.3 0 -0.03">
+      <attach model="thermal_cycler_biorad_c1000" body="world" prefix="/thermal_cycler_biorad_c1000:" />
+    </frame>
+
+    <frame pos="-0.3 0 -0.03">
+      <attach model="thermal_mixer_eppendorf_c" body="world" prefix="/thermal_mixer_eppendorf_c:" />
+    </frame>
+  </frame>
+
+  </worldbody>
+
+  <keyframe>
+    <key name="gallery" qpos="0.0 -0.96 1.16 0.0 -0.3 0.0 0.0084 0.0084 0.0 -1.5708 1.5708 0.0 1.5708 1.5708 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 -1.5708 1.5708 -1.5708 -1.5708 -1.5708 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0" />
+  </keyframe>
+
+</mujoco>

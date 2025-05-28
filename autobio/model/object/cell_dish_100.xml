@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="cell_dish_100">
+  <compiler angle="radian" meshdir="../../assets" />
+<!-- 
+  <extension>
+        <plugin plugin="mjlab.sdf.thread">
+            <instance name="bolt">
+                <config key="pitch" value="0.003"/>
+                <config key="radius" value="0.007"/> 
+                <config key="low" value="-1.0"/>
+                <config key="high" value="1.2"/>
+                <config key="gauge" value="0.0009"/>
+            </instance>
+            <instance name="nut">
+                <config key="pitch" value="0.003"/>
+                <config key="radius" value="0.007"/> 
+                <config key="low" value="-1.2"/>
+                <config key="high" value="1.0"/>
+                <config key="gauge" value="0.0006"/>
+            </instance>
+        </plugin>
+  </extension> -->
+
+  <option integrator="implicitfast" impratio="1" cone="elliptic" noslip_iterations="2" />
+
+  <asset>
+    <mesh name="cell_dish_100_body-visual" file="cell_dish_100_body.STL" scale="0.001 0.001 0.001" /> 
+    <mesh name="cell_dish_100_cap-visual" file="cell_dish_100_cap.STL" scale="0.001 0.001 0.001" />
+    <!-- <mesh name="bolt">
+      <plugin instance="bolt"/>
+    </mesh>
+    <mesh name="nut">
+      <plugin instance="nut"/>
+    </mesh> -->
+  </asset>
+
+  <visual>
+        <global azimuth="220" elevation="0"/>
+  </visual>
+
+  <worldbody>
+  <!-- Body -->
+    <body name="cell_dish_100_body">
+      <geom type="mesh" group="2" density="0" contype="0" conaffinity="0" mesh="cell_dish_100_body-visual" rgba="1 1 1 0.2" />
+      <geom type="cylinder" size="0.043325 0.0007500000000000007" pos="0 0 0.0007500000000000007" group="3" />
+      <replicate count="32" euler="0 0 -0.19634954084936207">
+          <geom type="box" size="0.004246592604778213 0.0007463885450041483 0.00925" pos="0 0.04236998973806878 0.010750000000000001" group="3" />
+      </replicate>
+
+      <!-- <geom type="sdf" name="bolt" mesh="bolt" rgba="0 1 0 1" pos="0 0 0.0445" contype="0" conaffinity="0" group="5">
+          <plugin instance="bolt"/>
+      </geom> -->
+    </body>
+  <!-- cap -->
+    <body name="cell_dish_100_cap" pos="0 0 0.051" euler="3.1415926535 0 0">
+      <freejoint name="cell_dish_100_cap"/>
+      <geom type="mesh" group="2" density="0" contype="0" conaffinity="0" mesh="cell_dish_100_cap-visual" rgba="1 1 1 0.2" /> 
+      <!-- <geom type="sdf" name="nut" mesh="nut" rgba="1 0 0 1" pos="0 0 0.0049" contype="0" conaffinity="0" group="5">
+          <plugin instance="nut"/>
+      </geom> -->
+      <geom type="cylinder" size="0.045825 0.0007500000000000007" pos="0 0 0.0007500000000000007" group="3" />
+      <replicate count="32" euler="0 0 -0.19634954084936207">
+          <geom type="box" size="0.004491635455602114 0.000746388545004145 0.00925" pos="0 0.04485795155474928 0.010750000000000001" group="3" />
+      </replicate>
+
+    </body>
+
+    <!-- restricting cylinder -->
+    <!-- <body name="restricting_cylinder">
+      <geom name="res_cyl" type="cylinder" size="0.0062 0.02488" pos="0 0 0.02488" group="5" contype="0" conaffinity="0" density="0"/>
+    </body> -->
+  </worldbody>
+  <!-- <contact>
+        <pair geom1="nut" geom2="bolt" friction="0.1" solref="0.002 1"/>
+        <pair geom1="nut" geom2="res_cyl" friction="0.1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+  </contact> -->
+  <!-- <actuator>
+        <motor joint="cell_dish_100_cap" ctrlrange="-0.05 0.05" gear="0 0 0 0 0 0.01" /> 
+  </actuator> -->
+</mujoco>

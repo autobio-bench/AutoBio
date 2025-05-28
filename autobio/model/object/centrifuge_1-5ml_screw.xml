@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="centrifuge_1-5ml_screw">
+  <compiler angle="radian" meshdir="../../assets" />
+
+  <extension>
+        <plugin plugin="mjlab.sdf.thread">
+            <instance name="bolt">
+                <config key="pitch" value="0.003"/>
+                <config key="radius" value="0.005992"/> 
+                <config key="low" value="-1.0"/>
+                <config key="high" value="1.2"/>
+                <config key="gauge" value="0.0009"/>
+            </instance>
+            <instance name="nut">
+                <config key="pitch" value="0.003"/>
+                <config key="radius" value="0.005992"/> 
+                <config key="low" value="-1.2"/>
+                <config key="high" value="1.0"/>
+                <config key="gauge" value="0.0006"/>
+            </instance>
+        </plugin>
+  </extension>
+
+  <option integrator="implicitfast" impratio="1" cone="elliptic" noslip_iterations="2" />
+
+  <asset>
+    <mesh name="centrifuge_1-5ml_screw_body-visual" file="container/centrifuge_1-5ml_screw_vis/centrifuge_1-5ml_screw_body.STL" scale="0.001 0.001 0.001"/>
+    <mesh name="centrifuge_1-5ml_screw_cap-visual" file="container/centrifuge_1-5ml_screw_vis/centrifuge_1-5ml_screw_cap.STL" scale="0.001 0.001 0.001"/>
+    <mesh name="bolt">
+      <plugin instance="bolt"/>
+    </mesh>
+    <mesh name="nut">
+      <plugin instance="nut"/>
+    </mesh>
+  </asset>
+
+  <visual>
+        <global azimuth="220" elevation="0"/>
+  </visual>
+
+  <worldbody>
+  <!-- Body -->
+    <body name="centrifuge_1-5ml_screw_body">
+      <geom type="mesh" group="2" density="0" contype="0" conaffinity="0" mesh="centrifuge_1-5ml_screw_body-visual" rgba="1 1 1 0.2" />
+      <geom type="cylinder" size="0.00535 0.0002950000000000001" pos="0 0 0.0002950000000000001" group="3" />
+      <replicate count="32" euler="0 0 -0.19634954084936207">
+          <geom type="box" size="0.0005243917007631493 0.0004677368215359325 0.021" pos="0 0.0048565014661603205 0.02159" group="3" />
+      </replicate>
+      <geom type="sdf" name="bolt" mesh="bolt" rgba="0 1 0 1" pos="0 0 0.038092" contype="0" conaffinity="0" group="5">
+          <plugin instance="bolt"/>
+      </geom>
+      <geom name="body_cyl" type="cylinder" size="0.00525 0.02129728" pos="0 0 0.02129728" group="5" contype="0" conaffinity="0" density="0"/>
+    </body>
+
+ <!-- cap -->
+    <body name="centrifuge_1-5ml_screw_cap" pos="0 0 0.04455" euler="3.1415926535 0 0">
+      <!-- <freejoint name="centrifuge_1-5ml_screw_cap"/> -->
+      <geom type="mesh" group="2" density="0" contype="0" conaffinity="0" mesh="centrifuge_1-5ml_screw_cap-visual" rgba="0.9294 0.2706 0.0627 1" /> 
+      <geom type="sdf" name="nut" mesh="nut" rgba="1 0 0 1" pos="0 0 0.005" contype="0" conaffinity="0" group="5">
+          <plugin instance="nut"/>
+      </geom>
+      <geom type="cylinder" size="0.0075 0.001" pos="0 0 0.001" group="3" />
+      <replicate count="32" euler="0 0 -0.19634954084936207">
+          <geom type="box" size="0.0007351285524717045 0.0004975923633360984 0.00328" pos="0 0.006966293086705377 0.00528" group="3" />
+      </replicate>
+      <geom name="cap_cyl" type="cylinder" size="0.0068 0.00428" pos="0 0 0.00428" group="5" contype="0" conaffinity="0" density="0"/>
+    </body>
+
+
+  </worldbody>
+  <contact>
+        <pair geom1="nut" geom2="bolt" friction="0.1" solref="0.002 1"/>
+        <pair geom1="nut" geom2="body_cyl" friction="0.1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+  </contact>
+  <!-- <actuator>
+        <motor joint="centrifuge_1-5ml_screw_cap" ctrlrange="-0.01 0.01" gear="0 0 0 0 0 0.01" /> 
+  </actuator> -->
+</mujoco>

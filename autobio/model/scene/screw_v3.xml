@@ -1,0 +1,71 @@
+<mujoco model="screw demo">
+    <compiler angle="radian" />
+
+    <option integrator="implicitfast" impratio="1" cone="elliptic" noslip_iterations="2">
+        <flag multiccd="enable"/>
+    </option>
+    <visual>
+        <global azimuth="220" elevation="-30"/>
+    </visual>
+
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+        <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.6 0.7 0.8" rgb2="0.4 0.5 0.6" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+        <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5"/>
+
+        <model name="table" file="../misc/simple_table.xml" content_type="text/xml" />
+        <model name="aloha" file="../robot/aloha_left.xml" content_type="text/xml" />
+        <!-- <model name="piper" file="../robot/piper.xml" content_type="text/xml" /> -->
+        <texture name="grid_texture" type="2d" builtin="checker" rgb1="0.1 0.3 0.8"
+            rgb2="0.8 0.3 0.3" width="512" height="512" />
+        <material name="grid_material" texture="grid_texture" rgba="1 1 1 0.5" />
+    </asset>
+
+    <worldbody>
+        <light directional="true" diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" pos="0 0 5" dir="0 0 -1"/>
+        <geom name="floor" pos="0 0 0" size="2.5 2 0.05" type="plane" material="groundplane"/>
+        <!-- <body name="table3" pos="0 0 0." quat="1 0 0 1">
+            <attach model="table" body="vention table" prefix="tb3"/>
+        </body>
+        <body name="aloha" pos="0 -0.5 0.824" >
+            <attach model="aloha" body="left/base_link" prefix="aloha"/>
+        </body> -->
+        <!-- <body name="piper" pos="-0.35 0. 0.824" >
+            <attach model="piper" body="base_link" prefix="pp"/>
+        </body> -->
+        <body name="cap" pos="0 -0.2 0.9905">
+            <freejoint name="cap" />
+            <!-- <joint name="cap_rot" type="hinge" axis="0 0 1" />
+            <joint name="cap_lift" type="slide" axis="0 0 1" /> -->
+            <!-- Gernerated with tube(0.03, 0.028, 0.02, 0.018, 32) -->
+            <geom type="cylinder" size="0.02 0.0010000000000000009" pos="0 0 0.019" material="grid_material" />
+            <replicate count="32" euler="0 0 -0.19634954084936207">
+                <geom type="box" size="0.001940514209886818 0.000995184726672196 0.009" pos="0 0.018860357073493707 0.009" rgba="0.5 0.5 0.5 0.5" />
+            </replicate>
+            <!-- <geom type="cylinder" size="0.02 0.01" pos="0 0 0.011" material="grid_material" /> -->
+            <!-- End of generated code -->
+            <!-- Gernerated with helix(0.017, 0.003, -0.8, 0.8, 0.0009, 64) -->
+            <frame pos="0 0 -0.002390625" euler="0 0 -5.006913291658733">
+                <replicate count="102" euler="0 0 0.09817477042468103" offset="0 0 4.6875e-05">
+                    <geom type="capsule" size="0.0009 0.0008344796655843688" pos="0.017 0 0" euler="-1.5427175419694363 0 0" />
+                </replicate>
+            </frame>
+            <!-- End of generated code -->
+        </body>
+
+        <body name="body" pos="0 -0.2 0.942">
+            <!-- <freejoint /> -->
+            <geom name="body" type="cylinder" size="0.016 0.05" pos="0 0 0" rgba="0.5 0.5 0.5 1" density="100" />
+            <geom name="neck" type="cylinder" size="0.016 0.008" pos="0 0 0.058" rgba="1 0 0 1" />
+            <!-- Gernerated with helix(0.016, 0.003, -1.0, 0.8, 0.001, 64) -->
+            <frame pos="0 0 -0.003" euler="0 0 -6.283185307179586">
+                <replicate count="115" euler="0 0 0.09817477042468103" offset="0 0 4.6875e-05">
+                    <geom type="capsule" size="0.001 0.0007854325574898513" pos="0.016 0 0" euler="-1.5409636283836645 0 0" />
+                </replicate>
+            </frame>
+            <!-- End of generated code -->
+        </body>
+
+    </worldbody>
+
+</mujoco>

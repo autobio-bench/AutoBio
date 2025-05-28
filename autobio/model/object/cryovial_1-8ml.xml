@@ -1,0 +1,90 @@
+<?xml versi on="1.0" encoding="utf-8"?>
+<mujoco model="cryovial_1-8ml">
+  <compiler angle="radian" meshdir="../../assets" />
+
+  <extension>
+        <plugin plugin="mjlab.sdf.thread">
+            <instance name="bolt">
+                <config key="pitch" value="0.003"/>
+                <config key="radius" value="0.005112"/> 
+                <config key="low" value="-1.0"/>
+                <config key="high" value="1.2"/>
+                <config key="gauge" value="0.0009"/>
+            </instance>
+            <instance name="nut">
+                <config key="pitch" value="0.003"/>
+                <config key="radius" value="0.005112"/> 
+                <config key="low" value="-1.2"/>
+                <config key="high" value="1.0"/>
+                <config key="gauge" value="0.0006"/>
+            </instance>
+        </plugin>
+  </extension>
+
+  <option integrator="implicitfast" impratio="1" cone="elliptic" noslip_iterations="2" />
+
+  <asset>
+   <mesh name="cryovial_1-8ml_body-visual" file="container/cryovial_1-8ml_vis/cryovial_1-8ml_body.STL" scale="0.001 0.001 0.001" /> 
+    <mesh name="cryovial_1-8ml-cap-visual" file="container/cryovial_1-8ml_vis/cryovial_1-8ml_cap.STL" scale="0.001 0.001 0.001" />
+    <mesh name="bolt">
+      <plugin instance="bolt"/>
+    </mesh>
+    <mesh name="nut">
+      <plugin instance="nut"/>
+    </mesh>
+  </asset>
+
+  <visual>
+        <global azimuth="220" elevation="0"/>
+  </visual>
+
+  <worldbody>
+  <!-- Body -->
+    <body name="cryovial_1-8ml_body">
+      <geom type="mesh" group="2" density="0" contype="0" conaffinity="0" mesh="cryovial_1-8ml_body-visual" rgba="1 1 1 0.2" />
+      
+      <geom type="sdf" name="bolt" mesh="bolt" rgba="0 1 0 1" pos="0 0 0.030672" contype="0" conaffinity="0" group="5">
+          <plugin instance="bolt"/>
+      </geom>
+      
+      <!-- Gernerated with tube(0.00497, 0.002, 0.03492, 0.03, 32) -->
+      <geom type="cylinder" size="0.00497 0.0024600000000000004" pos="0 0 0.0024600000000000004" group="3" condim="6"/>
+      <replicate count="32" euler="0 0 -0.19634954084936207">
+          <geom type="box" size="0.0004871451874379162 0.0014778493191082121 0.015" pos="0 0.003468218772452606 0.01992" group="3" />
+      </replicate>
+      <!-- End of generated code -->
+      
+      <geom name="body_cyl" type="cylinder" size="0.0045 0.01746" pos="0 0 0.01746" group="5" contype="0" conaffinity="0" density="0" condim="6"/>
+    </body>
+  
+  
+  
+  <!-- cap -->
+    <body name="cryovial_1-8ml_cap" pos="0 0 0.03644" euler="3.1415926535 0 0">
+      <!-- <freejoint name="cryovial_1-8ml_cap"/> -->
+      <geom type="mesh" group="2" density="0" contype="0" conaffinity="0" mesh="cryovial_1-8ml-cap-visual" rgba="0.98 0.96 0.90 1" /> 
+      
+      <geom type="sdf" name="nut" mesh="nut" rgba="1 0 0 1" pos="0 0 0.004238" contype="0" conaffinity="0" group="5">
+          <plugin instance="nut"/>
+      </geom>
+      
+      <!-- Gernerated with tube(0.0065, 0.006, 0.01152, 0.01, 32) -->
+      <geom type="cylinder" size="0.0065 0.0007600000000000003" pos="0 0 0.0007600000000000003" group="3" />
+      <replicate count="32" euler="0 0 -0.19634954084936207">
+          <geom type="box" size="0.0006371114121421439 0.000248796181668049 0.005" pos="0 0.006219904541701231 0.006520000000000001" group="3" />
+      </replicate>
+      <!-- End of generated code -->
+
+      <geom name="cap_cyl" type="cylinder" size="0.007 0.00576" pos="0 0 0.00576" group="5" contype="0" conaffinity="0" density="0" condim="6"/>   
+    </body>
+
+
+  </worldbody>
+  <contact>
+        <pair geom1="nut" geom2="bolt" friction="0.1" solref="0.002 1"/>
+        <pair geom1="nut" geom2="body_cyl" friction="0.1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+  </contact>
+  <!-- <actuator>
+        <motor joint="cryovial_1-8ml_cap" ctrlrange="-0.01 0.01" gear="0 0 0 0 0 0.01" /> 
+  </actuator> -->
+</mujoco>

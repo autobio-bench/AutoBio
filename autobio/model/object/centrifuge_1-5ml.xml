@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="centrifuge_1-5ml">
+  <compiler angle="radian" meshdir="../../assets" />
+
+  <asset>
+    <mesh name="stl:centrifuge_1-5ml-visual" file="container/centrifuge_tube_1-5ml_body.STL" scale="0.001 0.001 0.001" />
+  </asset>
+
+  <worldbody>
+    <body name="centrifuge_1-5ml">
+      <geom type="mesh" mesh="centrifuge_1-5ml-visual:" rgba="1 1 1 0.2" />
+      <geom type="cylinder" size="0.00515 0.0012500000000000011" pos="0 0 0.0012500000000000011" group="3" />
+      <replicate count="32" euler="0 0 -0.19634954084936207">
+        <geom type="box" size="0.0005047882726972371 0.0004975923633360984 0.0255" pos="0 0.004627608979025716 0.028" group="3" />
+      </replicate>
+    </body>
+  </worldbody>
+</mujoco>

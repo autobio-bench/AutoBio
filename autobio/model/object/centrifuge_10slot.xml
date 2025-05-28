@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="centrifuge_10slot">
+  <compiler angle="radian" meshdir="../../assets" />
+
+  <asset>
+    <mesh name="obj:centrifuge_10slot-visual" file="rack/centrifuge_10slot_vis.obj" scale="0.001 0.001 0.001" />
+  </asset>
+
+  <worldbody>
+    <body name="centrifuge_10slot">
+      <geom type="mesh" mesh="centrifuge_10slot-visual:upper_plane" />
+      <geom type="mesh" mesh="centrifuge_10slot-visual:lower_plane" />
+      <geom type="mesh" mesh="centrifuge_10slot-visual:pillars" />
+      <!-- Gernerated with centrifuge_rack(0.205, 0.096, 0.060, 0.017, 0.030, 0.036, 3, 6) -->
+      <geom type="box" size="0.1025 0.048 0.003" pos="0 0 -0.027" group="3" />
+      <geom type="box" size="0.1025 0.0017500000000000016 0.03" pos="0.0 0.04625 0" group="3" />
+      <geom type="box" size="0.1025 0.0017500000000000016 0.03" pos="0.0 -0.04625 0" group="3" />
+      <geom type="box" size="0.0019999999999999983 0.048 0.03" pos="0.10049999999999999 0.0 0" group="3" />
+      <geom type="box" size="0.0019999999999999983 0.048 0.03" pos="-0.10049999999999999 0.0 0" group="3" />
+      <replicate count="2" offset="0 0.036 0">
+          <replicate count="6" offset="0.036 0 0">
+              <geom type="box" size="0.002999999999999999 0.009499999999999998 0.03" pos="-0.09 -0.018 0" group="3" />
+          </replicate>
+      </replicate>
+      
+      <replicate count="3" offset="0 0.036 0">
+          <replicate count="5" offset="0.036 0 0">
+              <geom type="box" size="0.009499999999999998 0.002999999999999999 0.03" pos="-0.072 -0.036 0" group="3" />
+          </replicate>
+      </replicate>
+      <!-- End of generated code -->
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,63 @@
+<mujoco model="screw test">
+    <compiler angle="radian" />
+    <extension>
+        <plugin plugin="mjlab.sdf.thread">
+            <instance name="bolt">
+                <config key="pitch" value="0.003"/>
+                <config key="radius" value="0.0155"/>
+                <config key="low" value="-1.0"/>
+                <config key="high" value="0.8"/>
+                <config key="gauge" value="0.001"/>
+            </instance>
+            <instance name="nut">
+                <config key="pitch" value="0.003"/>
+                <config key="radius" value="0.0155"/>
+                <config key="low" value="-1.0"/>
+                <config key="high" value="0.8"/>
+                <config key="gauge" value="0.0005"/>
+            </instance>
+        </plugin>
+    </extension>
+
+    <option integrator="implicitfast" impratio="1" cone="elliptic" noslip_iterations="2" />
+    <asset>
+        <mesh name="bolt">
+            <plugin instance="bolt"/>
+        </mesh>
+        <mesh name="nut">
+            <plugin instance="nut"/>
+        </mesh>
+    </asset>
+    <visual>
+        <global azimuth="220" elevation="-30"/>
+    </visual>
+
+    <worldbody>
+        <!-- <light directional="true" diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" pos="0 0 5" dir="0 0 -1"/> -->
+        <!-- <body name="piper" pos="-0.35 0. 0.824" >
+            <attach model="piper" body="base_link" prefix="pp"/>
+        </body> -->
+        <body name="cap" pos="0 0 0.0565">
+            <freejoint name="cap" />
+            <geom type="cylinder" size="0.018 0.006" rgba="0.3 0.3 0.7 0.3" contype="0" conaffinity="0" mass="0"/>
+            <geom type="sdf" name="nut" mesh="nut" rgba="1 0 0 1" contype="0" conaffinity="0" group="3">
+                <plugin instance="nut"/>
+            </geom>
+        </body>
+
+        <body name="body">
+            <geom name="body" type="cylinder" size="0.015 0.03" pos="0 0 0.03" rgba="0.5 0.5 0.5 1" density="100" />
+            <geom type="sdf" name="bolt" mesh="bolt" rgba="0 1 0 1" pos="0 0 0.055" contype="0" conaffinity="0" group="3">
+                <plugin instance="bolt"/>
+            </geom>
+        </body>
+
+    </worldbody>
+    <contact>
+        <pair geom1="nut" geom2="bolt" friction="0.1" solref="0.002 1"/>
+        <pair geom1="nut" geom2="body" friction="0.1" solref="0.002 1"/>
+    </contact>
+    <actuator>
+        <motor joint="cap" ctrlrange="-1 1" gear="0 0 0 0 0 0.01" />
+    </actuator>
+</mujoco>

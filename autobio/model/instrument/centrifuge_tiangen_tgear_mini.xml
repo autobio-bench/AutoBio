@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="centrifuge_tiangen_tgear_mini">
+  <compiler angle="radian" autolimits="true" assetdir="../../assets" />
+  <default>
+    <default class="visual">
+      <geom type="mesh" contype="0" conaffinity="0" density="0" group="2" />
+      <mesh inertia="shell" />
+    </default>
+    <default class="inertia">
+      <geom type="mesh" contype="0" conaffinity="0" group="5" />
+      <mesh inertia="exact" />
+    </default>
+    <default class="collision">
+      <geom type="mesh" contype="0" conaffinity="1" density="0" group="3" />
+    </default>
+  </default>
+  <option gravity="0 0 0" />
+  <asset>
+    <mesh class="visual" name="body-visual-0" file="instrument/centrifuge_tiangen_tgear_mini/body-visual-0.obj" />
+    <material name="body-0" rgba="0.623529 0.368627 1 1" metallic="0.0" roughness="1.0" />
+    <mesh class="visual" name="body-visual-1" file="instrument/centrifuge_tiangen_tgear_mini/body-visual-1.obj" />
+    <material name="body-1" rgba="1 1 1 1" metallic="0.0" roughness="1.0" />
+    <mesh class="visual" name="body-visual-2" file="instrument/centrifuge_tiangen_tgear_mini/body-visual-2.obj" />
+    <material name="body-2" rgba="0.298039 0.298039 0.298039 1" metallic="0.0" roughness="1.0" />
+    <mesh class="visual" name="body-visual-3" file="instrument/centrifuge_tiangen_tgear_mini/body-visual-3.obj" />
+    <texture name="body-0" type="2d" file="instrument/centrifuge_tiangen_tgear_mini/body-0.png" />
+    <material name="body-3" rgba="1 1 1 1" metallic="0.0" roughness="1.0" texture="body-0" />
+    <mesh class="visual" name="body-visual-4" file="instrument/centrifuge_tiangen_tgear_mini/body-visual-4.obj" />
+    <material name="body-4" rgba="0.101961 0.101961 0.101961 1" metallic="0.0" roughness="1.0" />
+    <mesh class="inertia" name="body-inertia" file="instrument/centrifuge_tiangen_tgear_mini/body-inertia.obj" />
+    <mesh class="collision" name="body-collision-0" file="instrument/centrifuge_tiangen_tgear_mini/body-collision-0.obj" />
+    <mesh class="collision" name="body-collision-1" file="instrument/centrifuge_tiangen_tgear_mini/body-collision-1.obj" />
+    <mesh class="collision" name="body-collision-2" file="instrument/centrifuge_tiangen_tgear_mini/body-collision-2.obj" />
+    <mesh class="collision" name="body-collision-3" file="instrument/centrifuge_tiangen_tgear_mini/body-collision-3.obj" />
+    <mesh class="visual" name="lid-visual-0" file="instrument/centrifuge_tiangen_tgear_mini/lid-visual-0.obj" />
+    <material name="lid-0" rgba="0.858824 0.858824 0.858824 0.312941" metallic="0.0" roughness="1.0" />
+    <mesh class="inertia" name="lid-inertia" file="instrument/centrifuge_tiangen_tgear_mini/lid-inertia.obj" />
+    <mesh class="collision" name="lid-collision-0" file="instrument/centrifuge_tiangen_tgear_mini/lid-collision-0.obj" />
+    <mesh class="collision" name="lid-collision-1" file="instrument/centrifuge_tiangen_tgear_mini/lid-collision-1.obj" />
+    <mesh class="visual" name="rotor-visual-0" file="instrument/centrifuge_tiangen_tgear_mini/rotor-visual-0.obj" />
+    <material name="rotor-0" rgba="0.101961 0.101961 0.101961 1" metallic="0.0" roughness="1.0" />
+    <mesh class="inertia" name="rotor-inertia" file="instrument/centrifuge_tiangen_tgear_mini/rotor-inertia.obj" />
+  </asset>
+  <extension />
+  <worldbody>
+    <body name="body" pos="0 0 0.02340602" quat="1 0 0 0">
+      <geom class="visual" mesh="body-visual-0" material="body-0" />
+      <geom class="visual" mesh="body-visual-1" material="body-1" />
+      <geom class="visual" mesh="body-visual-2" material="body-2" />
+      <geom class="visual" mesh="body-visual-3" material="body-3" />
+      <geom class="visual" mesh="body-visual-4" material="body-4" />
+      <geom class="inertia" mesh="body-inertia" density="1000" />
+      <geom class="collision" mesh="body-collision-0" />
+      <geom class="collision" mesh="body-collision-1" />
+      <geom class="collision" mesh="body-collision-2" />
+      <geom class="collision" mesh="body-collision-3" />
+      <body name="lid" pos="0.00019315 0.10508702 0.13833942" quat="0 0 0.75623972 0.65429465">
+        <site name="lid" pos="0.0 0.04033 0.048" quat="1 0 0 0" size="0.0001" rgba="1 0 0 1"/>
+        <joint name="lid" type="hinge" pos="0.02748361 -0.08065858 -0.0138236" axis="-1 0 0" range="0 1.712" />
+        <geom class="visual" mesh="lid-visual-0" material="lid-0" />
+        <geom class="inertia" mesh="lid-inertia" density="1000" />
+        <geom class="collision" mesh="lid-collision-0" pos="0 -0.0024576 0" />
+        <geom class="collision" mesh="lid-collision-1" />
+      </body>
+      <body name="rotor" pos="0.00000054 0.00025897 0.08725972" quat="1 0 0 0">
+        <joint name="rotor" type="hinge" pos="-0.00000055 0.00000082 -0.0030014" axis="0 0 1" range="-180 180"/>
+        <geom class="visual" mesh="rotor-visual-0" material="rotor-0" />
+        <geom class="inertia" mesh="rotor-inertia" density="1000" />
+      </body>
+    </body>
+  </worldbody>
+  <equality>
+    <joint name="lid-lock" joint1="lid" polycoef="1.712" active="false" />
+  </equality>
+  <actuator />
+</mujoco>

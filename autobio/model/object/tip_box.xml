@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="tip_box">
+  <compiler angle="radian" meshdir="../../assets" />
+
+  <asset>
+    <mesh name="obj:tip_box-visual" file="rack/tip_box_24slot_vis.obj" scale="0.001 0.001 0.001" />
+  </asset>
+
+  <worldbody>
+    <body name="tip_box">
+      <geom type="mesh" mesh="tip_box-visual:up" />
+      <geom type="mesh" mesh="tip_box-visual:low" rgba="0 0 0 0.6" />
+      <!-- Generated with plate_with_box_well(0.052, 0.036, 0.040, 0.0040, 0.008, 0.006, 0.006, 4, 6) -->
+      <geom type="box" size="0.026 0.002 0.02" pos="0.0 0.016 0" group="3" />
+      <geom type="box" size="0.026 0.002 0.02" pos="0.0 -0.016 0" group="3" />
+      <geom type="box" size="0.002 0.018 0.02" pos="0.024 0.0 0" group="3" />
+      <geom type="box" size="0.002 0.018 0.02" pos="-0.024 0.0 0" group="3" />
+      <replicate count="5" offset="0.008 0 0">
+        <geom type="box" size="0.002 0.013999999999999999 0.02" pos="-0.016 0 0" group="3" />
+      </replicate>
+      <replicate count="3" offset="0 0.008 0">
+        <geom type="box" size="0.022 0.002 0.02" pos="0 -0.008 0" group="3" />
+      </replicate>
+      <!-- End of generated code -->
+      <geom type="plane" size="0.026 0.018 0.02" pos="0 0 0.0204" contype="2" conaffinity="0" rgba="1 0 0 1" group="4" />
+    </body>
+  </worldbody>
+</mujoco>

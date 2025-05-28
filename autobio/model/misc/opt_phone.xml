@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="dexhand021_right_sim">
+  <compiler angle="radian" meshdir="../assets" texturedir="../assets" />
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+  </visual>
+
+  <option
+    timestep="0.001" integrator="implicitfast"
+    noslip_iterations="3"
+    cone="elliptic" impratio="10"
+  />
+  <asset>
+    <model name="dexhand" file="../hand/dexhand021_right.xml" content_type="text/xml" />
+    <model name="pipette" file="../object/pipette.gen.xml" content_type="text/xml" />
+  </asset>
+  <worldbody>
+    <!-- <body name="robot" pos="0.14 -0.18 -0.04" quat="0 0 0.7071 0.7071"> -->
+    <body name="robot" pos="0.0 -0.18 0.10" quat="0.5 -0.5 0.5 0.5">
+      <joint name="X" type="slide" axis="1 0 0" range="-0.1 0.1"/>
+      <joint name="Z" type="slide" axis="0 0 1" range="-0.1 0.1"/>
+      <joint name="AX" type="hinge" axis="1 0 0" range="-1.57 1.57"/>
+      <joint name="AY" type="hinge" axis="0 1 0" range="-1.57 1.57"/>
+      <attach model="dexhand" body="rh_base" prefix="dh"/>
+    </body>
+
+    <body name='object'>
+      <geom name="phone" type="box" size="0.1 0.04 0.0075" rgba="0.5 0.5 0.5 1" pos="0 0 0"/>
+    </body>
+  </worldbody>
+
+  <!-- <contact>
+    <exclude body1="pipette" body2="pusher_right" />
+    <exclude body1="pipette" body2="pusher_mid" />
+    <exclude body1="pipette" body2="knob" />
+  </contact> -->
+
+  <actuator>
+    <position name="X" joint="X" kp="2000" kv="100" ctrlrange="-0.1 0.1"/>
+    <position name="Z" joint="Z" kp="2000" kv="100" ctrlrange="-0.1 0.1"/>
+    <position name="AX" joint="AX" kp="200" kv="100" ctrlrange="-1.57 1.57"/>
+    <position name="AY" joint="AY" kp="200" kv="100" ctrlrange="-1.57 1.57"/>
+  </actuator>
+</mujoco>

@@ -1,0 +1,86 @@
+<mujoco model="medicine lab">
+
+    <option integrator="implicitfast" impratio="10" cone="elliptic" noslip_iterations="2">
+        <flag multiccd="enable"/>
+    </option>
+    <visual>
+        <!-- <rgba haze="0.45 0.45 0.45 1"/> -->
+        <!-- <quality shadowsize="8192"/> -->
+        <global azimuth="220" elevation="-30" offwidth="1280" offheight="960"/>
+    </visual>
+
+    <asset>
+        <!-- <texture type="skybox" builtin="flat" rgb1="0.6 0.6 0.6" rgb2="0 0 0" width="512" height="3072"/> -->
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+        <!-- <texture type="skybox" builtin="gradient" rgb1="1.0 1.0 1.0" rgb2="1.0 1.0 1.0" width="512" height="3072"/> -->
+        <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.6 0.7 0.8" rgb2="0.4 0.5 0.6" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+        <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5"/>
+        <!-- <material name="plain_floor" rgba="0.6 0.7 0.8 1" /> -->
+        <model name="table" file="../misc/simple_table.xml" content_type="text/xml" />
+        <model name="aloha" file="../robot/aloha_left.xml" content_type="text/xml" />
+        <model name="centrifuge_10slot" file="../object/centrifuge_10slot.gen.xml" content_type="text/xml" />
+        <!-- <model name="centrifuge_15ml" file="../object/centrifuge_15ml_screw.xml" content_type="text/xml" /> -->
+        <model name="centrifuge_50ml_screw" file="../object/centrifuge_50ml_screw.xml" content_type="text/xml" />
+    </asset>
+
+    <worldbody>
+        <light directional="true" diffuse="0.8 0.8 0.8" ambient="0.2 0.2 0.2" pos="0 0 5" dir="0 0 -1"/>
+        <geom name="floor" pos="0 0 0" size="2.5 2 0.05" type="plane" material="groundplane"/>
+        <body name="table3" pos="0 0 0." quat="1 0 0 1">
+            <camera name="table_cam_front" pos="0. -1.5 1.65" quat="0.819 0.574 0 0" fovy="45" resolution="1280 960"/>
+            <camera name="table_cam_left" pos="-1.2 0. 1.65" quat="0.579 0.406 -0.406 -0.579" fovy="45" resolution="1280 960"/>
+            <attach model="table" body="vention table" prefix="/"/>
+            <body name="1/aloha:" pos="0.4 0.0 0.824" quat="1 0 0 -1">
+                <attach model="aloha" body="left/base_link" prefix="1/aloha:"/>
+            </body>
+            <body name="2/aloha:" pos="-0.4 0.0 0.824" quat="1 0 0 0" >
+                <attach model="aloha" body="left/base_link" prefix="2/aloha:"/>
+            </body>
+            <body name="slot1" pos="0.0 0.0 0.854" quat="1 0 0 1">
+                <attach model="centrifuge_10slot" body="centrifuge_10slot" prefix="1/"/>
+            </body>
+            <!-- <body name="slot3" pos="0.0 0.3 0.854" quat="1 0 0 0">
+                <attach model="centrifuge_10slot" body="centrifuge_10slot" prefix="3/"/>
+            </body> -->
+        </body>
+        <!-- <body name="centrifuge_15ml_wrap" pos="-0.09 -0.036 0.83" quat="1 0 0 0">
+            <attach model="centrifuge_15ml" body="centrifuge_15ml_body" prefix="4/"/>
+            <joint name="centrifuge_15ml" type="free"/>
+        </body>
+        <body name="centrifuge_15ml_cap_wrap" pos="-0.09 -0.036 0.83" quat="1 0 0 0">
+            <attach model="centrifuge_15ml" body="centrifuge_15ml_cap" prefix="5/"/>
+            <joint name="centrifuge_15ml_cap" type="free"/>
+        </body> -->
+        <body name="centrifuge_50ml_screw_cap_wrap" pos="-0.072 -0.018 0.83" quat="1 0 0 0">
+            <joint name="centrifuge_50ml_screw_cap" type="free"/>
+            <attach model="centrifuge_50ml_screw" body="centrifuge_50ml_screw_cap" prefix="6/"/>
+        </body>
+        <body name="centrifuge_50ml_screw_body_wrap" pos="-0.072 -0.018 0.83" quat="1 0 0 0">
+            <joint name="centrifuge_50ml_screw_body" type="free"/>
+            <attach model="centrifuge_50ml_screw" body="centrifuge_50ml_screw_body" prefix="7/"/>
+        </body>
+    </worldbody>
+
+    <contact>
+        <!-- <pair geom1="5/nut" geom2="4/bolt" friction="1" solref="0.002 1"/>
+        <pair geom1="5/nut" geom2="4/body_cyl" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+        <pair geom1="4/body_cyl" geom2="2/aloha:rightfinger" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+        <pair geom1="4/body_cyl" geom2="2/aloha:leftfinger" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+        <pair geom1="4/body_cyl" geom2="1/aloha:rightfinger" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+        <pair geom1="4/body_cyl" geom2="1/aloha:leftfinger" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+        <pair geom1="5/cap_cyl" geom2="2/aloha:rightfinger" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+        <pair geom1="5/cap_cyl" geom2="2/aloha:leftfinger" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+        <pair geom1="5/cap_cyl" geom2="1/aloha:rightfinger" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+        <pair geom1="5/cap_cyl" geom2="1/aloha:leftfinger" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/> -->
+        <pair geom1="6/cap_cyl" geom2="2/aloha:rightfinger" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+        <pair geom1="6/cap_cyl" geom2="2/aloha:leftfinger" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+        <pair geom1="6/cap_cyl" geom2="1/aloha:rightfinger" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+        <pair geom1="6/cap_cyl" geom2="1/aloha:leftfinger" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+        <pair geom1="6/nut" geom2="7/bolt" friction="1" solref="0.002 1"/>
+        <pair geom1="6/nut" geom2="7/body_cyl" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+        <pair geom1="7/body_cyl" geom2="2/aloha:rightfinger" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+        <pair geom1="7/body_cyl" geom2="2/aloha:leftfinger" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+        <pair geom1="7/body_cyl" geom2="1/aloha:rightfinger" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+        <pair geom1="7/body_cyl" geom2="1/aloha:leftfinger" friction="1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+    </contact>
+</mujoco>

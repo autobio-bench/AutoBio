@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="centrifuge_eppendorf_5430">
+  <compiler angle="radian" autolimits="true" assetdir="../../assets" />
+  <default>
+    <default class="visual">
+      <geom type="mesh" contype="0" conaffinity="0" density="0" group="2" />
+      <mesh inertia="shell" />
+    </default>
+    <default class="inertia">
+      <geom type="mesh" contype="0" conaffinity="0" group="5" />
+      <mesh inertia="exact" />
+    </default>
+    <default class="collision">
+      <geom type="mesh" contype="0" conaffinity="1" density="0" group="3" />
+    </default>
+  </default>
+  <option gravity="0 0 0" />
+  <asset>
+    <mesh class="visual" name="body-visual-0" file="instrument/centrifuge_eppendorf_5430/body-visual-0.obj" />
+    <material name="body-0" rgba="0.298039 0.298039 0.298039 1" metallic="0.0" roughness="1.0" />
+    <mesh class="visual" name="body-visual-1" file="instrument/centrifuge_eppendorf_5430/body-visual-1.obj" />
+    <material name="body-1" rgba="0.101961 0.101961 0.101961 1" metallic="0.0" roughness="1.0" />
+    <mesh class="visual" name="body-visual-2" file="instrument/centrifuge_eppendorf_5430/body-visual-2.obj" />
+    <texture name="body-0" type="2d" file="instrument/centrifuge_eppendorf_5430/body-0.png" />
+    <material name="body-2" rgba="1 1 1 1" metallic="0.0" roughness="1.0" texture="body-0" />
+    <mesh class="visual" name="body-visual-3" file="instrument/centrifuge_eppendorf_5430/body-visual-3.obj" />
+    <material name="body-3" rgba="0.6 0.6 0.58039216 1" metallic="0.0" roughness="1.0" />
+    <mesh class="inertia" name="body-inertia" file="instrument/centrifuge_eppendorf_5430/body-inertia.obj" />
+    <mesh class="collision" name="body-collision-0" file="instrument/centrifuge_eppendorf_5430/body-collision-0.obj" />
+    <mesh class="visual" name="lid-visual-0" file="instrument/centrifuge_eppendorf_5430/lid-visual-0.obj" />
+    <material name="lid-0" rgba="0.6 0.6 0.58039216 1" metallic="0.0" roughness="1.0" />
+    <mesh class="visual" name="lid-visual-1" file="instrument/centrifuge_eppendorf_5430/lid-visual-1.obj" />
+    <material name="lid-1" rgba="0.101961 0.101961 0.101961 1" metallic="0.0" roughness="1.0" />
+    <mesh class="inertia" name="lid-inertia" file="instrument/centrifuge_eppendorf_5430/lid-inertia.obj" />
+    <mesh class="visual" name="rotor-visual-0" file="instrument/centrifuge_eppendorf_5430/rotor-visual-0.obj" />
+    <material name="rotor-0" rgba="0.101961 0.101961 0.101961 1" metallic="0.0" roughness="1.0" />
+    <mesh class="inertia" name="rotor-inertia" file="instrument/centrifuge_eppendorf_5430/rotor-inertia.obj" />
+    <mesh class="collision" name="rotor-collision-0" file="instrument/centrifuge_eppendorf_5430/rotor-collision/0.obj" />
+    <mesh class="collision" name="rotor-collision-1" file="instrument/centrifuge_eppendorf_5430/rotor-collision/1.obj" />
+    <mesh class="collision" name="rotor-collision-2" file="instrument/centrifuge_eppendorf_5430/rotor-collision/2.obj" />
+    <mesh class="collision" name="rotor-collision-3" file="instrument/centrifuge_eppendorf_5430/rotor-collision/3.obj" />
+    <mesh class="collision" name="rotor-collision-4" file="instrument/centrifuge_eppendorf_5430/rotor-collision/4.obj" />
+    <mesh class="collision" name="rotor-collision-5" file="instrument/centrifuge_eppendorf_5430/rotor-collision/5.obj" />
+    <mesh class="collision" name="rotor-collision-6" file="instrument/centrifuge_eppendorf_5430/rotor-collision/6.obj" />
+    <mesh class="collision" name="rotor-collision-7" file="instrument/centrifuge_eppendorf_5430/rotor-collision/7.obj" />
+    <mesh class="collision" name="rotor-collision-8" file="instrument/centrifuge_eppendorf_5430/rotor-collision/8.obj" />
+    <mesh class="collision" name="rotor-collision-9" file="instrument/centrifuge_eppendorf_5430/rotor-collision/9.obj" />
+    <mesh class="collision" name="rotor-collision-10" file="instrument/centrifuge_eppendorf_5430/rotor-collision/10.obj" />
+    <mesh class="collision" name="rotor-collision-11" file="instrument/centrifuge_eppendorf_5430/rotor-collision/11.obj" />
+    <mesh class="collision" name="rotor-collision-12" file="instrument/centrifuge_eppendorf_5430/rotor-collision/12.obj" />
+    <mesh class="collision" name="rotor-collision-13" file="instrument/centrifuge_eppendorf_5430/rotor-collision/13.obj" />
+    <mesh class="collision" name="rotor-collision-14" file="instrument/centrifuge_eppendorf_5430/rotor-collision/14.obj" />
+    <mesh class="collision" name="rotor-collision-15" file="instrument/centrifuge_eppendorf_5430/rotor-collision/15.obj" />
+    <mesh class="collision" name="rotor-collision-16" file="instrument/centrifuge_eppendorf_5430/rotor-collision/16.obj" />
+    <mesh class="collision" name="rotor-collision-17" file="instrument/centrifuge_eppendorf_5430/rotor-collision/17.obj" />
+    <mesh class="collision" name="rotor-collision-18" file="instrument/centrifuge_eppendorf_5430/rotor-collision/18.obj" />
+    <mesh class="collision" name="rotor-collision-19" file="instrument/centrifuge_eppendorf_5430/rotor-collision/19.obj" />
+    <mesh class="collision" name="rotor-collision-20" file="instrument/centrifuge_eppendorf_5430/rotor-collision/20.obj" />
+    <mesh class="collision" name="rotor-collision-21" file="instrument/centrifuge_eppendorf_5430/rotor-collision/21.obj" />
+    <mesh class="collision" name="rotor-collision-22" file="instrument/centrifuge_eppendorf_5430/rotor-collision/22.obj" />
+    <mesh class="collision" name="rotor-collision-23" file="instrument/centrifuge_eppendorf_5430/rotor-collision/23.obj" />
+    <mesh class="collision" name="rotor-collision-24" file="instrument/centrifuge_eppendorf_5430/rotor-collision/24.obj" />
+    <mesh class="collision" name="rotor-collision-25" file="instrument/centrifuge_eppendorf_5430/rotor-collision/25.obj" />
+    <mesh class="collision" name="rotor-collision-26" file="instrument/centrifuge_eppendorf_5430/rotor-collision/26.obj" />
+    <mesh class="collision" name="rotor-collision-27" file="instrument/centrifuge_eppendorf_5430/rotor-collision/27.obj" />
+    <mesh class="collision" name="rotor-collision-28" file="instrument/centrifuge_eppendorf_5430/rotor-collision/28.obj" />
+    <mesh class="collision" name="rotor-collision-29" file="instrument/centrifuge_eppendorf_5430/rotor-collision/29.obj" />
+    <mesh class="collision" name="rotor-collision-30" file="instrument/centrifuge_eppendorf_5430/rotor-collision/30.obj" />
+    <mesh class="collision" name="rotor-collision-31" file="instrument/centrifuge_eppendorf_5430/rotor-collision/31.obj" />
+    <mesh class="collision" name="rotor-collision-32" file="instrument/centrifuge_eppendorf_5430/rotor-collision/32.obj" />
+    <mesh class="collision" name="rotor-collision-33" file="instrument/centrifuge_eppendorf_5430/rotor-collision/33.obj" />
+    <mesh class="collision" name="rotor-collision-34" file="instrument/centrifuge_eppendorf_5430/rotor-collision/34.obj" />
+    <mesh class="collision" name="rotor-collision-35" file="instrument/centrifuge_eppendorf_5430/rotor-collision/35.obj" />
+    <mesh class="collision" name="rotor-collision-36" file="instrument/centrifuge_eppendorf_5430/rotor-collision/36.obj" />
+    <mesh class="collision" name="rotor-collision-37" file="instrument/centrifuge_eppendorf_5430/rotor-collision/37.obj" />
+    <mesh class="collision" name="rotor-collision-38" file="instrument/centrifuge_eppendorf_5430/rotor-collision/38.obj" />
+    <mesh class="collision" name="rotor-collision-39" file="instrument/centrifuge_eppendorf_5430/rotor-collision/39.obj" />
+    <mesh class="collision" name="rotor-collision-40" file="instrument/centrifuge_eppendorf_5430/rotor-collision/40.obj" />
+    <mesh class="collision" name="rotor-collision-41" file="instrument/centrifuge_eppendorf_5430/rotor-collision/41.obj" />
+    <mesh class="collision" name="rotor-collision-42" file="instrument/centrifuge_eppendorf_5430/rotor-collision/42.obj" />
+    <mesh class="collision" name="rotor-collision-43" file="instrument/centrifuge_eppendorf_5430/rotor-collision/43.obj" />
+    <mesh class="collision" name="rotor-collision-44" file="instrument/centrifuge_eppendorf_5430/rotor-collision/44.obj" />
+    <mesh class="collision" name="rotor-collision-45" file="instrument/centrifuge_eppendorf_5430/rotor-collision/45.obj" />
+    <mesh class="collision" name="rotor-collision-46" file="instrument/centrifuge_eppendorf_5430/rotor-collision/46.obj" />
+    <mesh class="collision" name="rotor-collision-47" file="instrument/centrifuge_eppendorf_5430/rotor-collision/47.obj" />
+    <mesh class="collision" name="rotor-collision-48" file="instrument/centrifuge_eppendorf_5430/rotor-collision/48.obj" />
+    <mesh class="collision" name="rotor-collision-49" file="instrument/centrifuge_eppendorf_5430/rotor-collision/49.obj" />
+    <mesh class="collision" name="rotor-collision-50" file="instrument/centrifuge_eppendorf_5430/rotor-collision/50.obj" />
+    <mesh class="collision" name="rotor-collision-51" file="instrument/centrifuge_eppendorf_5430/rotor-collision/51.obj" />
+    <mesh class="collision" name="rotor-collision-52" file="instrument/centrifuge_eppendorf_5430/rotor-collision/52.obj" />
+    <mesh class="collision" name="rotor-collision-53" file="instrument/centrifuge_eppendorf_5430/rotor-collision/53.obj" />
+    <mesh class="collision" name="rotor-collision-54" file="instrument/centrifuge_eppendorf_5430/rotor-collision/54.obj" />
+    <mesh class="collision" name="rotor-collision-55" file="instrument/centrifuge_eppendorf_5430/rotor-collision/55.obj" />
+    <mesh class="collision" name="rotor-collision-56" file="instrument/centrifuge_eppendorf_5430/rotor-collision/56.obj" />
+    <mesh class="collision" name="rotor-collision-57" file="instrument/centrifuge_eppendorf_5430/rotor-collision/57.obj" />
+    <mesh class="collision" name="rotor-collision-58" file="instrument/centrifuge_eppendorf_5430/rotor-collision/58.obj" />
+    <mesh class="collision" name="rotor-collision-59" file="instrument/centrifuge_eppendorf_5430/rotor-collision/59.obj" />
+    <mesh class="collision" name="rotor-collision-60" file="instrument/centrifuge_eppendorf_5430/rotor-collision/60.obj" />
+    <mesh class="collision" name="rotor-collision-61" file="instrument/centrifuge_eppendorf_5430/rotor-collision/61.obj" />
+    <mesh class="collision" name="rotor-collision-62" file="instrument/centrifuge_eppendorf_5430/rotor-collision/62.obj" />
+    <mesh class="collision" name="rotor-collision-63" file="instrument/centrifuge_eppendorf_5430/rotor-collision/63.obj" />
+    <mesh class="collision" name="rotor-collision-64" file="instrument/centrifuge_eppendorf_5430/rotor-collision/64.obj" />
+    <mesh class="collision" name="rotor-collision-65" file="instrument/centrifuge_eppendorf_5430/rotor-collision/65.obj" />
+  </asset>
+  <extension />
+  <worldbody>
+    <frame pos="0 -0 0.0263094">
+      <body name="body" pos="0 0 0" quat="1 0 0 0">
+        <geom class="visual" mesh="body-visual-0" material="body-0" />
+        <geom class="visual" mesh="body-visual-1" material="body-1" />
+        <geom class="visual" mesh="body-visual-2" material="body-2" />
+        <geom class="visual" mesh="body-visual-3" material="body-3" />
+        <geom class="inertia" mesh="body-inertia" density="1000" />
+        <geom class="collision" type="box" size="0.21500002 0.16841087 0.06178388" pos="0.0007327 -0.00283753 0.03657486" quat="-0.00033635 -0.70486893 0.70933731 -0.00050545" />
+        <geom class="collision" type="box" size="0.16830035 0.01716663 0.04459959" pos="0 0.1946653 0.14067705" />
+        <geom class="collision" type="box" size="0.16830034 0.01683003 0.04459959" pos="-0.15280828 0.0221514 0.14274859" quat="-0.70677971 -0 -0 0.7074337" />
+        <geom class="collision" type="box" size="0.16830034 0.01683003 0.04459959" pos="0.15189976 0.0221514 0.14274859" quat="-0.70677971 -0 -0 0.7074337" />
+        <geom class="collision" type="box" size="0.16843072 0.0597929 0.02256974" pos="0 -0.15879984 0.12051722" />
+        <geom class="collision" mesh="body-collision-0" />
+        <geom class="collision" type="box" size="0.16843072 0.04362355 0.02256974" pos="0 -0.14362319 0.16442561" />
+        <geom class="collision" type="box" size="0.05 0.0215 0.04225" pos="-0.10994141 0.15916327 0.14274859" quat="-0.33985331 0 0 0.94047846" />
+        <geom class="collision" type="box" size="0.05 0.0215 0.04225" pos="0.1033724 -0.09107175 0.14274859" quat="-0.33985331 0 0 0.94047846" />
+        <geom class="collision" type="box" size="0.05 0.0215 0.04225" pos="0.11311583 0.15531485 0.14217629" quat="0.38197186 0 0 0.92417395" />
+        <geom class="collision" type="box" size="0.05 0.0215 0.04225" pos="-0.11713386 -0.07976088 0.14217629" quat="0.38197186 0 0 0.92417395" />
+        <body name="lid" pos="-0 0.21119162 0.1779843" quat="0.99711655 -0.0758853 0 -0">
+          <site name="lid" pos="0 -0.01417064 0.35234656" quat="1 0 0 0" size="0.001" rgba="1 0 0 1"/>
+          <joint name="lid" type="hinge" pos="0.1699992 -0.01517791 0.01416673" axis="-1 0 0" range="-1.723 0" stiffness="3.2" springref="0" damping="20"/>
+          <geom class="visual" mesh="lid-visual-0" material="lid-0" />
+          <geom class="visual" mesh="lid-visual-1" material="lid-1" />
+          <geom class="inertia" mesh="lid-inertia" density="1000" />
+          <geom class="collision" type="box" size="0.16988745 0.013591 0.17617328" pos="-0.00045303 -0.01417064 0.1778046" />
+          <geom class="collision" type="cylinder" size="0.01302361 0.00763184" pos="-0.11603153 -0.03001344 0.31502777" quat="0.70825088 0.70595962 0.00094263 0.00090617" />
+          <geom class="collision" type="cylinder" size="0.01302361 0.00763184" pos="0.11561844 -0.03001344 0.31502777" quat="0.70825088 0.70595962 0.00094263 0.00090617" />
+        </body>
+        <body name="rotor" pos="-0.03197159 0.05388833 -0" quat="-0.51024693 0 0 0.86002794">
+          <joint name="rotor" type="hinge" pos="-0.00000009 0.03642845 0.1022019" axis="0 0 1" damping="0.0001" />
+          <geom class="visual" mesh="rotor-visual-0" material="rotor-0" />
+          <geom class="inertia" mesh="rotor-inertia" density="1000" />
+          <frame pos="-0.00000009 0.03642845 0.1022019">
+            <replicate count="30" euler="0 0 0.2094395">
+              <frame pos="0.00000009 -0.03642845 -0.1022019">
+                <site name="slot" pos="0 -0.038476 0.12743" quat="0.904679 -0.426093 0 0" group="3" />
+                <geom class="collision" mesh="rotor-collision-0" />
+                <geom class="collision" mesh="rotor-collision-1" />
+                <geom class="collision" mesh="rotor-collision-2" />
+                <geom class="collision" mesh="rotor-collision-3" />
+                <geom class="collision" mesh="rotor-collision-4" />
+                <geom class="collision" mesh="rotor-collision-5" />
+                <geom class="collision" mesh="rotor-collision-6" />
+                <geom class="collision" mesh="rotor-collision-7" />
+                <geom class="collision" mesh="rotor-collision-8" />
+                <geom class="collision" mesh="rotor-collision-9" />
+                <geom class="collision" mesh="rotor-collision-10" />
+                <geom class="collision" mesh="rotor-collision-11" />
+                <geom class="collision" mesh="rotor-collision-12" />
+                <geom class="collision" mesh="rotor-collision-13" />
+                <geom class="collision" mesh="rotor-collision-14" />
+                <geom class="collision" mesh="rotor-collision-15" />
+                <geom class="collision" mesh="rotor-collision-16" />
+                <geom class="collision" mesh="rotor-collision-17" />
+                <geom class="collision" mesh="rotor-collision-18" />
+                <geom class="collision" mesh="rotor-collision-19" />
+                <geom class="collision" mesh="rotor-collision-20" />
+                <geom class="collision" mesh="rotor-collision-21" />
+                <geom class="collision" mesh="rotor-collision-22" />
+                <geom class="collision" mesh="rotor-collision-23" />
+                <geom class="collision" mesh="rotor-collision-24" />
+                <geom class="collision" mesh="rotor-collision-25" />
+                <geom class="collision" mesh="rotor-collision-26" />
+                <geom class="collision" mesh="rotor-collision-27" />
+                <geom class="collision" mesh="rotor-collision-28" />
+                <geom class="collision" mesh="rotor-collision-29" />
+                <geom class="collision" mesh="rotor-collision-30" />
+                <geom class="collision" mesh="rotor-collision-31" />
+                <geom class="collision" mesh="rotor-collision-32" />
+                <geom class="collision" mesh="rotor-collision-33" />
+                <geom class="collision" mesh="rotor-collision-34" />
+                <geom class="collision" mesh="rotor-collision-35" />
+                <geom class="collision" mesh="rotor-collision-36" />
+                <geom class="collision" mesh="rotor-collision-37" />
+                <geom class="collision" mesh="rotor-collision-38" />
+                <geom class="collision" mesh="rotor-collision-39" />
+                <geom class="collision" mesh="rotor-collision-40" />
+                <geom class="collision" mesh="rotor-collision-41" />
+                <geom class="collision" mesh="rotor-collision-42" />
+                <geom class="collision" mesh="rotor-collision-43" />
+                <geom class="collision" mesh="rotor-collision-44" />
+                <geom class="collision" mesh="rotor-collision-45" />
+                <geom class="collision" mesh="rotor-collision-46" />
+                <geom class="collision" mesh="rotor-collision-47" />
+                <geom class="collision" mesh="rotor-collision-48" />
+                <geom class="collision" mesh="rotor-collision-49" />
+                <geom class="collision" mesh="rotor-collision-50" />
+                <geom class="collision" mesh="rotor-collision-51" />
+                <geom class="collision" mesh="rotor-collision-52" />
+                <geom class="collision" mesh="rotor-collision-53" />
+                <geom class="collision" mesh="rotor-collision-54" />
+                <geom class="collision" mesh="rotor-collision-55" />
+                <geom class="collision" mesh="rotor-collision-56" />
+                <geom class="collision" mesh="rotor-collision-57" />
+                <geom class="collision" mesh="rotor-collision-58" />
+                <geom class="collision" mesh="rotor-collision-59" />
+                <geom class="collision" mesh="rotor-collision-60" />
+                <geom class="collision" mesh="rotor-collision-61" />
+                <geom class="collision" mesh="rotor-collision-62" />
+                <geom class="collision" mesh="rotor-collision-63" />
+                <geom class="collision" mesh="rotor-collision-64" />
+                <geom class="collision" mesh="rotor-collision-65" />
+              </frame>
+            </replicate>
+          </frame>
+        </body>
+      </body>
+    </frame>
+  </worldbody>
+  <equality>
+    <joint name="lid-lock" joint1="lid" polycoef="-1.723" active="false" />
+  </equality>
+  <actuator />
+</mujoco>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="centrifuge_15ml">
+    <compiler angle="radian" meshdir="../../assets" />
+
+    <extension>
+        <plugin plugin="mjlab.sdf.thread">
+            <instance name="bolt">
+                <config key="pitch" value="0.003"/>
+                <config key="radius" value="0.00784"/>
+                <config key="low" value="-1.0"/>
+                <config key="high" value="1.2"/>
+                <config key="gauge" value="0.0009"/>
+            </instance>
+            <instance name="nut">
+                <config key="pitch" value="0.003"/>
+                <config key="radius" value="0.00784"/>
+                <config key="low" value="-1.2"/>
+                <config key="high" value="1.0"/>
+                <config key="gauge" value="0.0006"/>
+            </instance>
+        </plugin>
+    </extension>
+
+    <option integrator="implicitfast" impratio="1" cone="elliptic" noslip_iterations="2" />
+    <asset>
+        <mesh name="centrifuge_15ml_body-visual" file="container/centrifuge_15ml_screw_vis/centrifuge_tube_15ml_body.STL" scale="0.001 0.001 0.001" />
+        <mesh name="centrifuge_15ml_cap-visual" file="container/centrifuge_15ml_screw_vis/centrifuge_tube_15ml_cap.STL" scale="0.001 0.001 0.001" />
+        <mesh name="bolt">
+        <plugin instance="bolt"/>
+        </mesh>
+        <mesh name="nut">
+        <plugin instance="nut"/>
+        </mesh>
+
+        <material name="centrifuge_15ml_body" rgba="1 1 1 0.2" />
+        <material name="centrifuge_15ml_cap" rgba="0.9294 0.2706 0.0627 1" />
+    </asset>
+
+    <visual>
+        <global azimuth="220" elevation="0"/>
+    </visual>
+
+    <worldbody>
+        <body name="centrifuge_15ml_body">
+            <geom name="centrifuge_15ml_body-visual" type="mesh" group="2" density="0" contype="0" conaffinity="0" mesh="centrifuge_15ml_body-visual" material="centrifuge_15ml_body" />
+            <geom type="cylinder" size="0.00781 0.0013049999999999937" pos="0 0 0.0013049999999999937" group="3" />
+            <replicate count="32" euler="0 0 -0.19634954084936207">
+                <geom type="box" size="0.0007655138659738684 0.0004975923633360984 0.058" pos="0 0.007275 0.061" group="3" />
+            </replicate>
+            <geom type="sdf" name="bolt" mesh="bolt" rgba="0 1 0 1" pos="0 0 0.115" contype="0" conaffinity="0" group="5">
+                <plugin instance="bolt"/>
+            </geom>
+            <geom name="body_cyl" type="cylinder" size="0.0068 0.06" pos="0 0 0.06" group="5" contype="0" conaffinity="0" margin="0.001"/>
+        </body>
+
+        <body name="centrifuge_15ml_cap" pos="0 0 0.1226" euler="3.1415926535 0 0">
+            <!-- <freejoint name="centrifuge_15ml_cap"/> 0.00721-->
+            <geom type="mesh" group="2" density="0" contype="0" conaffinity="0" mesh="centrifuge_15ml_cap-visual" material="centrifuge_15ml_cap" />
+            <geom type="sdf" name="nut" mesh="nut" rgba="1 0 0 1" pos="0 0 0.00608" contype="0" conaffinity="0" group="5" margin="0.001">
+                <plugin instance="nut"/>
+            </geom>
+            <geom name="cap_cyl" type="cylinder" size="0.0115 0.00508" pos="0 0 0.00508" group="5" contype="0" conaffinity="0" margin="0.001" rgba="0.5 0.5 0.5 0.2"/>
+            <!-- Gernerated with tube(0.01108, 0.009, 0.01, 0.008, 32) -->
+            <geom type="cylinder" size="0.012 0.0015800000000000002" pos="0 0 0.0015800000000000002" group="3" />
+            <replicate count="64" euler="0 0 -0.09817477042468103">
+                <geom type="box" size="0.0005888120919290162 0.0004993977281025866 0.0035" pos="0 0.011486147746359483 0.006660000000000001" group="3" />
+            </replicate>
+            <!-- End of generated code -->
+        </body>
+    </worldbody>
+
+    <contact>
+        <pair geom1="nut" geom2="bolt" friction="0.1" solref="0.002 1"/>
+        <pair geom1="nut" geom2="body_cyl" friction="0.1" solref="0.002 1" solimp="0.9 0.95 0.001"/>
+    </contact>
+
+    <!-- <actuator>
+        <motor joint="centrifuge_15ml_cap" ctrlrange="-0.1 0.1" gear="0 0 0 0 0 0.01" />
+    </actuator> -->
+</mujoco>

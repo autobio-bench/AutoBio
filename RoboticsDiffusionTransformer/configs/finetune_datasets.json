@@ -1,0 +1,12 @@
+[
+    "pickup",
+    "thermal_cycler_close",
+    "thermal_cycler_open",
+    "insert",
+    "pipette",
+    "screw_loose",
+    "screw_tighten",
+    "insert_centrifuge_5430",
+    "thermal_mixer",
+    "thermal_cycler_combined"
+]

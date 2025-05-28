@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="centrifuge_50ml">
+  <compiler angle="radian" meshdir="../../assets" />
+
+  <asset>
+    <mesh name="obj:centrifuge_50ml-visual" file="container/centrifuge_50ml_vis.obj" scale="0.001 0.001 0.001" />
+  </asset>
+
+  <worldbody>
+    <body name="centrifuge_50ml">
+      <geom type="mesh" mesh="centrifuge_50ml-visual:" rgba="1 1 1 0.2" />
+      <!-- Gernerated with tube(0.0145, 0.0134, 0.1146, 0.113, 16) -->
+      <geom type="cylinder" size="0.0145 0.0007999999999999952" pos="0 0 0.0007999999999999952" group="3" />
+      <replicate count="16" euler="0 0 -0.39269908169872414">
+        <geom type="box" size="0.0028288096692338596 0.0005394319042217769 0.0565" pos="0 0.013681954661625065 0.05809999999999999" group="3" />
+      </replicate>
+      <!-- End of generated code -->
+    </body>
+  </worldbody>
+</mujoco>

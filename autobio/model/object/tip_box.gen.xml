@@ -1,0 +1,44 @@
+<mujoco model="tip_box">
+  <compiler angle="radian" meshdir="../../assets/"/>
+
+  <asset>
+    <mesh name="tip_box-visual_up_visual" file="rack/tip_box_24slot_vis/up_visual.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="tip_box-visual_low_visual" file="rack/tip_box_24slot_vis/low_visual.obj" scale="0.001 0.001 0.001"/>
+  </asset>
+
+  <worldbody>
+    <body name="tip_box">
+      <geom size="0.026 0.002 0.02" pos="0 0.016 0" type="box" group="3"/>
+      <geom size="0.026 0.002 0.02" pos="0 -0.016 0" type="box" group="3"/>
+      <geom size="0.002 0.018 0.02" pos="0.024 0 0" type="box" group="3"/>
+      <geom size="0.002 0.018 0.02" pos="-0.024 0 0" type="box" group="3"/>
+      <geom size="0.026 0.018 0.02" pos="0 0 0.0204" type="plane" contype="2" conaffinity="0" group="4" rgba="1 0 0 1"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="2" mesh="tip_box-visual_up_visual"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="2" rgba="0 0 0 0.6" mesh="tip_box-visual_low_visual"/>
+      <frame>
+        <geom size="0.002 0.014 0.02" pos="-0.016 0 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.002 0.014 0.02" pos="-0.008 0 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.002 0.014 0.02" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.002 0.014 0.02" pos="0.008 0 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.002 0.014 0.02" pos="0.016 0 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.022 0.002 0.02" pos="0 -0.008 0" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.022 0.002 0.02" type="box" group="3"/>
+      </frame>
+      <frame>
+        <geom size="0.022 0.002 0.02" pos="0 0.008 0" type="box" group="3"/>
+      </frame>
+    </body>
+  </worldbody>
+</mujoco>

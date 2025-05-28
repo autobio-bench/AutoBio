@@ -1,0 +1,16 @@
+<mujoco model="pipette_tip">
+  <compiler angle="radian" meshdir="../../assets/"/>
+
+  <asset>
+    <mesh name="pipette_tip-visual_visual" file="container/tip_200ul_vis/visual.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="pipette_tip-collision_tip_collision_0" file="container/tip_200ul_col/tip_collision_0.obj" scale="0.001 0.001 0.001"/>
+  </asset>
+
+  <worldbody>
+    <body name="pipette_tip">
+      <geom type="mesh" contype="0" conaffinity="0" group="2" mesh="pipette_tip-visual_visual" rgba="1 1 1 0.5"/>
+      <geom type="mesh" group="3" mesh="pipette_tip-collision_tip_collision_0"/>
+      <geom size="0.00287797 0.008" pos="0 0 -0.008" type="cylinder" conaffinity="3" group="3"/>
+    </body>
+  </worldbody>
+</mujoco>

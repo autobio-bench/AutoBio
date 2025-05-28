@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="centrifuge_eppendorf_5910_ri">
+  <compiler angle="radian" autolimits="true" assetdir="../../assets" />
+  <default>
+    <default class="visual">
+      <geom type="mesh" contype="0" conaffinity="0" density="0" group="2" />
+      <mesh inertia="shell" />
+    </default>
+    <default class="inertia">
+      <geom type="mesh" contype="0" conaffinity="0" group="5" />
+      <mesh inertia="exact" />
+    </default>
+    <default class="collision">
+      <geom type="mesh" contype="0" conaffinity="1" density="0" group="3" />
+    </default>
+  </default>
+  <option gravity="0 0 0" />
+  <asset>
+    <mesh class="visual" name="body-visual-0" file="instrument/centrifuge_eppendorf_5910_ri/body-visual-0.obj" />
+    <material name="body-0" rgba="0.78431373 0.78431373 0.76862745 1" metallic="0.0" roughness="1.0" />
+    <mesh class="visual" name="body-visual-1" file="instrument/centrifuge_eppendorf_5910_ri/body-visual-1.obj" />
+    <material name="body-1" rgba="0.101961 0.101961 0.101961 1" metallic="0.0" roughness="1.0" />
+    <mesh class="visual" name="body-visual-2" file="instrument/centrifuge_eppendorf_5910_ri/body-visual-2.obj" />
+    <texture name="body-0" type="2d" file="instrument/centrifuge_eppendorf_5910_ri/body-0.png" />
+    <material name="body-2" rgba="1 1 1 1" metallic="0.0" roughness="1.0" texture="body-0" />
+    <mesh class="inertia" name="body-inertia" file="instrument/centrifuge_eppendorf_5910_ri/body-inertia.obj" />
+    <mesh class="collision" name="body-collision-0" file="instrument/centrifuge_eppendorf_5910_ri/body-collision-0.obj" />
+    <mesh class="visual" name="lid-visual-0" file="instrument/centrifuge_eppendorf_5910_ri/lid-visual-0.obj" />
+    <material name="lid-0" rgba="0.101961 0.101961 0.101961 1" metallic="0.0" roughness="1.0" />
+    <mesh class="visual" name="lid-visual-1" file="instrument/centrifuge_eppendorf_5910_ri/lid-visual-1.obj" />
+    <material name="lid-1" rgba="0.78431373 0.78431373 0.76862745 1" metallic="0.0" roughness="1.0" />
+    <mesh class="inertia" name="lid-inertia" file="instrument/centrifuge_eppendorf_5910_ri/lid-inertia.obj" />
+    <mesh class="visual" name="rotor-body-visual-0" file="instrument/centrifuge_eppendorf_5910_ri/rotor-body-visual-0.obj" />
+    <material name="rotor-body-0" rgba="1 1 1 1" metallic="0.0" roughness="1.0" />
+    <mesh class="visual" name="rotor-body-visual-1" file="instrument/centrifuge_eppendorf_5910_ri/rotor-body-visual-1.obj" />
+    <material name="rotor-body-1" rgba="0.380392 0.615686 0.980392 1" metallic="0.0" roughness="1.0" />
+    <mesh class="inertia" name="rotor-body-inertia" file="instrument/centrifuge_eppendorf_5910_ri/rotor-body-inertia.obj" />
+    <mesh class="visual" name="rotor-bucket-visual-0" file="instrument/centrifuge_eppendorf_5910_ri/rotor-bucket-visual-0.obj" />
+    <material name="rotor-bucket-0" rgba="0 0.568627 0.894118 1" metallic="0.0" roughness="1.0" />
+    <mesh class="inertia" name="rotor-bucket-inertia" file="instrument/centrifuge_eppendorf_5910_ri/rotor-bucket-inertia.obj" />
+    <mesh class="visual" name="adapter-7x50-visual-0" file="instrument/centrifuge_eppendorf_5910_ri/adapter-7x50-visual-0.obj" />
+    <material name="adapter-7x50-0" rgba="1 1 1 1" metallic="0.0" roughness="1.0" />
+    <mesh class="inertia" name="adapter-7x50-inertia" file="instrument/centrifuge_eppendorf_5910_ri/adapter-7x50-inertia.obj" />
+    <mesh class="visual" name="adapter-17x15-visual-0" file="instrument/centrifuge_eppendorf_5910_ri/adapter-17x15-visual-0.obj" />
+    <material name="adapter-17x15-0" rgba="1 0.670588 0.137255 1" metallic="0.0" roughness="1.0" />
+    <mesh class="inertia" name="adapter-17x15-inertia" file="instrument/centrifuge_eppendorf_5910_ri/adapter-17x15-inertia.obj" />
+  </asset>
+  <extension />
+  <worldbody>
+    <body name="body" pos="0 0 0.05654646" quat="1 0 0 0">
+      <geom class="visual" mesh="body-visual-0" material="body-0" />
+      <geom class="visual" mesh="body-visual-1" material="body-1" />
+      <geom class="visual" mesh="body-visual-2" material="body-2" />
+      <geom class="inertia" mesh="body-inertia" density="1000" />
+      <geom class="collision" name="body-inertia.002" mesh="body-collision-0" />
+      <geom class="collision" type="box" size="0.36135778 0.29667471 0.07082613" pos="0 0 0.01546793" />
+      <geom class="collision" type="box" size="0.36289674 0.03628967 0.08310333" pos="0 0.26516002 0.17030346" />
+      <geom class="collision" type="box" size="0.30627608 0.03644686 0.08514473" pos="0.32315937 -0.00782504 0.16854638" quat="0.70756862 0.00117126 -0.00124823 -0.70664257" />
+      <geom class="collision" type="box" size="0.30627608 0.1038276 0.08514473" pos="-0.25767905 -0.00782504 0.16854638" quat="0.70756862 0.00117126 -0.00124823 -0.70664257" />
+      <geom class="collision" type="box" size="0.36289674 0.05262003 0.08310333" pos="0 -0.25960118 0.17030346" />
+      <geom class="collision" type="box" size="0.0960729 0.0230575 0.08492844" pos="0.24200605 -0.16945544 0.16854638" quat="-0.3531246 -0.00095042 -0.00093073 0.93557535" />
+      <geom class="collision" type="box" size="0.0960729 0.0230575 0.08492844" pos="-0.10209555 0.1908775 0.16854638" quat="-0.3531246 -0.00095042 -0.00093073 0.93557535" />
+      <geom class="collision" type="box" size="0.09607289 0.0230575 0.08492844" pos="-0.10704812 -0.16564459 0.1692524" quat="0.91103685 0.0000146 0.00133017 -0.41232279" />
+      <geom class="collision" type="box" size="0.09607289 0.0230575 0.08492844" pos="0.25120223 0.18449309 0.1692524" quat="0.91103685 0.0000146 0.00133017 -0.41232279" />
+      <body name="lid" pos="-0 0.38006762 0.56668099" quat="-0.56526372 0.82491026 0 0">
+        <site name="lid" pos="0.36919737 -0.20 0.02106472" quat="-1 1 1 -1" size="0.001" rgba="1 0 0 1"/>
+        <joint name="lid" type="hinge" pos="-0.2266712 0.30333889 0.02083411" axis="1 -0 -0" range="0 1.94" stiffness="27.5" springref="0" damping="20"/>
+        <geom class="visual" mesh="lid-visual-0" material="lid-0" />
+        <geom class="visual" mesh="lid-visual-1" material="lid-1" />
+        <geom class="inertia" mesh="lid-inertia" density="1000" />
+        <geom class="collision" type="box" size="0.29593109 0.02106472 0.36919737" pos="0.00669231 0.01305942 0.02087301" quat="0.49807294 0.50168699 0.49849278 0.50173545" />
+      </body>
+      <body name="rotor-body" pos="0.07134309 0.0116669 0.20058534" quat="0.80993986 0 0 -0.58651293">
+        <joint name="rotor-body" type="hinge" axis="0 0 1" range="-180 180"/>
+        <geom class="visual" mesh="rotor-body-visual-0" material="rotor-body-0" />
+        <geom class="visual" mesh="rotor-body-visual-1" material="rotor-body-1" />
+        <geom class="inertia" mesh="rotor-body-inertia" density="1000" />
+        <geom class="collision" type="box" size="0.16315603 0.0081578 0.02871547" pos="0.00038151 0.00010916 -0.01821184" />
+        <geom class="collision" type="box" size="0.16315606 0.0081578 0.02871547" pos="0.00038151 0.00010916 -0.01821184" quat="-0.70637015 0 0 0.70784265" />
+        <geom class="collision" type="cylinder" size="0.0345578 0.03003073" pos="-0.0000825 -0.00021007 -0.01738334" />
+        <body name="rotor-bucket-0" pos="-0.09273635 0.09278435 -0.07515634" quat="-0.38268179 -0.00111962 0.002703 0.92387558">
+          <joint name="rotor-bucket-0" type="hinge" pos="-0.08583492 0.00000001 0.06834238" axis="1 -0 0" range="-1.5708 0" />
+          <geom class="visual" mesh="rotor-bucket-visual-0" material="rotor-bucket-0" />
+          <geom class="inertia" mesh="rotor-bucket-inertia" density="1000" />
+          <body name="adapter-7x50-0" pos="0.00000012 0.00000003 -0.00166672" quat="0 0 -0 1">
+            <joint name="adapter-7x50-0" type="slide" axis="0 0 1" range="0 0.08" />
+            <geom class="visual" mesh="adapter-7x50-visual-0" material="adapter-7x50-0" />
+            <geom class="inertia" mesh="adapter-7x50-inertia" density="1000" />
+          </body>
+        </body>
+        <body name="rotor-bucket-1" pos="-0.09278436 -0.09273635 -0.07515634" quat="0.92387558 0.002703 -0.00111962 -0.38268179">
+          <joint name="rotor-bucket-1" type="hinge" pos="-0.08583492 0.00000001 0.06834238" axis="1 -0 0" range="-1.5708 0" />
+          <geom class="visual" mesh="rotor-bucket-visual-0" material="rotor-bucket-0" />
+          <geom class="inertia" mesh="rotor-bucket-inertia" density="1000" />
+          <body name="adapter-17x15-1" pos="0.0000679 0.00000008 -0.01166692" quat="1 0 -0 0">
+            <joint name="adapter-17x15-1" type="slide" axis="0 0 1" range="0 0.08" />
+            <geom class="visual" mesh="adapter-17x15-visual-0" material="adapter-17x15-0" />
+            <geom class="inertia" mesh="adapter-17x15-inertia" density="1000" />
+          </body>
+        </body>
+        <body name="rotor-bucket-2" pos="0.09273635 -0.09278435 -0.07515634" quat="0.92387558 0.002703 0.00111962 0.38268179">
+          <joint name="rotor-bucket-2" type="hinge" pos="-0.08583492 0.00000001 0.06834238" axis="1 -0 0" range="-1.5708 0" />
+          <geom class="visual" mesh="rotor-bucket-visual-0" material="rotor-bucket-0" />
+          <geom class="inertia" mesh="rotor-bucket-inertia" density="1000" />
+          <body name="adapter-7x50-1" pos="0.00006777 0.00000002 -0.00166672" quat="1 0 -0 -0">
+            <joint name="adapter-7x50-1" type="slide" axis="0 0 1" range="0 0.08" />
+            <geom class="visual" mesh="adapter-7x50-visual-0" material="adapter-7x50-0" />
+            <geom class="inertia" mesh="adapter-7x50-inertia" density="1000" />
+          </body>
+        </body>
+        <body name="rotor-bucket-3" pos="0.09278436 0.09273635 -0.07515634" quat="0.38268179 0.00111962 0.002703 0.92387558">
+          <joint name="rotor-bucket-3" type="hinge" pos="-0.08583492 0.00000001 0.06834238" axis="1 -0 0" range="-1.5708 0" />
+          <geom class="visual" mesh="rotor-bucket-visual-0" material="rotor-bucket-0" />
+          <geom class="inertia" mesh="rotor-bucket-inertia" density="1000" />
+          <body name="adapter-17x15-0" pos="0 0.00000009 -0.01166692" quat="-0 0 -0 1">
+            <joint name="adapter-17x15-0" type="slide" axis="0 0 1" range="0 0.08" />
+            <geom class="visual" mesh="adapter-17x15-visual-0" material="adapter-17x15-0" />
+            <geom class="inertia" mesh="adapter-17x15-inertia" density="1000" />
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <equality>
+    <joint name="lid-lock" joint1="lid" polycoef="1.94" active="false" />
+  </equality>
+  <actuator />
+</mujoco>

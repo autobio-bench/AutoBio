@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="dexhand021_right_sim">
+  <compiler angle="radian" meshdir="../assets" texturedir="../assets" />
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+  </visual>
+
+  <option
+    timestep="0.001" integrator="implicitfast"
+    noslip_iterations="3"
+    cone="elliptic" impratio="10"
+  />
+  <asset>
+    <model name="dexhand" file="../hand/dexhand021_right.xml" content_type="text/xml" />
+    <model name="pipette" file="../object/pipette.gen.xml" content_type="text/xml" />
+  </asset>
+  <worldbody>
+    <!-- <body name="robot" pos="0.14 -0.18 -0.04" quat="0 0 0.7071 0.7071"> -->
+    <body name="robot" pos="0.1 -0.18 0.02" quat="0.5 -0.5 0.5 0.5">
+      <!-- <joint name="X" type="slide" axis="1 0 0" range="-0.1 0.1"/> -->
+      <joint name="Y" type="slide" axis="0 1 0" range="-0.1 0.1"/>
+      <joint name="Z" type="slide" axis="0 0 1" range="-0.1 0.1"/>
+      <joint name="AZ" type="hinge" axis="0 0 1" range="-1.57 1.57"/>
+
+      <attach model="dexhand" body="rh_base" prefix="dh"/>
+    </body>
+
+    <body name='object'>
+      <!-- <freejoint/> -->
+      <!-- <site name='rh_thdistal' pos='-0.04864155570528364 -0.011575796239127085 -0.00022054' rgba='1.0 0.0 0.0 1.0' />
+      <site name='rh_ffdistal' pos='-0.03700657258561732 0.033623110883221924 0.00133234' rgba='1.0 0.0 0.0 1.0' />
+      <site name='rh_mfdistal' pos='-0.00898224265922514 0.0491865765916962 -0.00026013' rgba='1.0 0.0 0.0 1.0' />
+      <site name='rh_rfdistal' pos='0.02075047067093285 0.04549085586065353 0.00313831' rgba='1.0 0.0 0.0 1.0' />
+      <site name='rh_lfdistal' pos='0.04645253025787316 0.01849763316322871 0.00159818' rgba='1.0 0.0 0.0 1.0' /> -->
+      <!-- <attach model="pipette" body="pipette" prefix="object"/> -->
+      <geom name="pen" type="capsule" size="0.0075 0.10" rgba="0.5 0.5 0.5 1" pos="0 0 0" />
+    </body>
+  </worldbody>
+
+  <!-- <contact>
+    <exclude body1="pipette" body2="pusher_right" />
+    <exclude body1="pipette" body2="pusher_mid" />
+    <exclude body1="pipette" body2="knob" />
+  </contact> -->
+
+  <actuator>
+    <position name="Y" joint="Y" kp="2000" kv="100" ctrlrange="-0.1 0.1"/>
+    <position name="Z" joint="Z" kp="2000" kv="100" ctrlrange="-0.1 0.1"/>
+    <position name="AZ" joint="AZ" kp="200" kv="100" ctrlrange="-1.57 1.57"/>
+  </actuator>
+</mujoco>

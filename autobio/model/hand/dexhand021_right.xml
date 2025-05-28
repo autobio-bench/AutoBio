@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="dexhand021_right_sim">
+  <compiler angle="radian" meshdir="../../assets" autolimits="true"/>
+  <size nkey="5"/>
+  <option integrator="implicitfast" timestep="0.01" cone="elliptic" impratio="10"/>
+  <default>
+    <joint damping="0.05" armature="0.0002" frictionloss="0.01"/>
+    <geom condim="3" solref="0.01 1" solimp="0.9 0.99 0.001" friction="1 0.005 0.0001"/>
+    <equality solref="0.01 1" solimp="0.9 0.99 0.001"/>
+  </default>
+  <asset>
+    <mesh name="rh_base" file="robot/dexhand021/right_hand_base.STL"/>
+    <mesh name="rh_thbase" file="robot/dexhand021/r_f_link1_1.STL"/>
+    <mesh name="rh_thproximal" file="robot/dexhand021/r_f_link1_2.STL"/>
+    <mesh name="rh_thmiddle" file="robot/dexhand021/r_f_link1_3.STL"/>
+    <mesh name="rh_thdistal" file="robot/dexhand021/r_f_link1_4.STL"/>
+    <mesh name="rh_ffbase" file="robot/dexhand021/r_f_link2_1.STL"/>
+    <mesh name="rh_ffproximal" file="robot/dexhand021/r_f_link2_2.STL"/>
+    <mesh name="rh_ffmiddle" file="robot/dexhand021/r_f_link2_3.STL"/>
+    <mesh name="rh_ffdistal" file="robot/dexhand021/r_f_link2_4.STL"/>
+    <mesh name="rh_mfbase" file="robot/dexhand021/r_f_link3_1.STL"/>
+    <mesh name="rh_mfproximal" file="robot/dexhand021/r_f_link3_2.STL"/>
+    <mesh name="rh_mfmiddle" file="robot/dexhand021/r_f_link3_3.STL"/>
+    <mesh name="rh_mfdistal" file="robot/dexhand021/r_f_link3_4.STL"/>
+    <mesh name="rh_rfbase" file="robot/dexhand021/r_f_link4_1.STL"/>
+    <mesh name="rh_rfproximal" file="robot/dexhand021/r_f_link4_2.STL"/>
+    <mesh name="rh_rfmiddle" file="robot/dexhand021/r_f_link4_3.STL"/>
+    <mesh name="rh_rfdistal" file="robot/dexhand021/r_f_link4_4.STL"/>
+    <mesh name="rh_lfbase" file="robot/dexhand021/r_f_link5_1.STL"/>
+    <mesh name="rh_lfproximal" file="robot/dexhand021/r_f_link5_2.STL"/>
+    <mesh name="rh_lfmiddle" file="robot/dexhand021/r_f_link5_3.STL"/>
+    <mesh name="rh_lfdistal" file="robot/dexhand021/r_f_link5_4.STL"/>
+
+    <material name="shell-plastic" rgba="0.6 0.6 0.6 1" />
+    <material name="joint-metal" rgba="0.79216 0.81961 0.93333 1" />
+  </asset>
+  <worldbody>
+    <body name="rh_base">
+      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_base"/>
+      <body name="rh_thbase" pos="0.032783 0.023781 0.11211" quat="0.151551 -0.775385 -0.612635 0.0221215">
+        <inertial pos="0.0019855 -0.00034962 0.013484" quat="0.71629 -0.0780372 -0.0535872 0.691351" mass="0.0055264" diaginertia="5.52348e-07 4.77971e-07 2.4806e-07"/>
+        <joint name="rh_thj1" pos="0 0 0" axis="0 0 1" range="0 2.2" actuatorfrcrange="-10 10"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_thbase"/>
+        <body name="rh_thproximal" pos="0.0083307 0 0" quat="0.707105 -0.707108 0 0">
+          <inertial pos="0.021437 0.00017315 -0.0012982" quat="0.0127346 0.706496 -0.016911 0.7074" mass="0.012462" diaginertia="2.145e-06 2.07718e-06 7.76292e-07"/>
+          <joint name="rh_thj2" pos="0 0 0" axis="0 0 1" range="0 1.3" actuatorfrcrange="-10 10"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_thproximal"/>
+          <body name="rh_thmiddle" pos="0.043 0 0">
+            <inertial pos="0.013455 -0.00070242 -0.0012928" quat="0.0204223 0.706783 -0.0204207 0.70684" mass="0.005726" diaginertia="4.7655e-07 4.47482e-07 2.54788e-07"/>
+            <joint name="rh_thj3" pos="0 0 0" axis="0 0 1" range="0 1.3" actuatorfrcrange="-10 10"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_thmiddle"/>
+            <body name="rh_thdistal" pos="0.025 0 0">
+              <joint name="rh_thj4" pos="0 0 0" axis="0 0 1" range="0 1.3" actuatorfrcrange="-10 10"/>
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_thdistal"/>
+              <!-- <site name="rh_thdistal" pos="0.025 0.003 0" size="0.01" type="sphere"/> -->
+              <geom name="rh_thdistal_col" type="capsule" rgba="0 0 1.0 1" contype="1" conaffinity="1" group="3" size="0.0095" fromto="0.0 0 -0.001 0.027 -0.007 -0.001" condim="4"/>
+            </body>
+            <geom name="rh_thmiddle_col" type="capsule" rgba="0 0 1.0 1" contype="1" conaffinity="1" group="3" size="0.007" fromto="0.0125 0.003 -0.0045 0.0125 0.003 0.0023"/>
+          </body>
+          <geom name="rh_thproximal_col" type="capsule" rgba="0 0 1.0 1" contype="1" conaffinity="1" group="3" size="0.0095" fromto="0.0 0 0 0.03 0 -0.002"/>
+        </body>
+      </body>
+      <body name="rh_ffbase" pos="0.006966 0.034912 0.1644" quat="0.707105 0 -0.707108 0">
+        <inertial pos="0.007003 2.619e-09 0.00096933" quat="0.601863 0.371162 0.371162 0.601863" mass="0.0051273" diaginertia="3.9879e-07 3.4058e-07 2.5589e-07"/>
+        <joint name="rh_ffj1" pos="0 0 0" axis="0 0 1" range="0 0.3" actuatorfrcrange="-10 10"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="joint-metal" mesh="rh_ffbase"/>
+        <body name="rh_ffproximal" pos="0.017 0 0" quat="0.707105 -0.707108 0 0">
+          <inertial pos="0.02116 -0.00059146 -2.1984e-06" quat="0.507863 0.503147 0.496172 0.492678" mass="0.011802" diaginertia="2.07728e-06 2.0592e-06 6.94909e-07"/>
+          <joint name="rh_ffj2" pos="0 0 0" axis="0 0 1" range="0 1.3" actuatorfrcrange="-10 10"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_ffproximal"/>
+          <body name="rh_ffmiddle" pos="0.043 0 0">
+            <inertial pos="0.013455 -0.00070241 -3.5721e-07" quat="0.0204051 0.706783 -0.0204379 0.70684" mass="0.005726" diaginertia="4.7655e-07 4.47482e-07 2.54788e-07"/>
+            <joint name="rh_ffj3" pos="0 0 0" axis="0 0 1" range="0 1.3" actuatorfrcrange="-10 10"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_ffmiddle"/>
+            <body name="rh_ffdistal" pos="0.025 0 0">
+              <joint name="rh_ffj4" pos="0 0 0" axis="0 0 1" range="0 1.3" actuatorfrcrange="-10 10"/>
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_ffdistal"/>
+              <!-- <site name="rh_ffdistal" pos="0.025 0.003 0" size="0.01" type="sphere"/> -->
+              <geom name="rh_ffdistal_col" type="capsule" rgba="0 0 1.0 1" contype="1" conaffinity="1" group="3" size="0.0095" fromto="0.0 0 0 0.026 -0.007 0" condim="4"/>
+            </body>
+            <geom name="rh_ffmiddle_col" type="capsule" rgba="0 0 1.0 1" contype="1" conaffinity="1" group="3" size="0.007" fromto="0.012 0.003 -0.0035 0.012 0.003 0.0035"/>
+          </body>
+          <geom name="rh_ffproximal_col" type="capsule" rgba="0 0 1.0 1" contype="1" conaffinity="1" group="3" size="0.0095" fromto="0.005 0 0 0.03 0 0"/>
+        </body>
+      </body>
+      <body name="rh_mfbase" pos="0.006966 0.010612 0.1734" quat="0.707105 0 -0.707108 0">
+        <inertial pos="0.007003 2.619e-09 0.00096932" quat="0.601863 0.371162 0.371162 0.601863" mass="0.0051273" diaginertia="3.9879e-07 3.4058e-07 2.5589e-07"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="joint-metal" mesh="rh_mfbase"/>
+        <body name="rh_mfproximal" pos="0.017 0 0" quat="0.707105 -0.707108 0 0">
+          <inertial pos="0.02116 -0.00059146 -2.1984e-06" quat="0.507863 0.503147 0.496172 0.492678" mass="0.011802" diaginertia="2.07728e-06 2.0592e-06 6.94909e-07"/>
+          <joint name="rh_mfj2" pos="0 0 0" axis="0 0 1" range="0 1.3" actuatorfrcrange="-10 10"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_mfproximal"/>
+          <body name="rh_mfmiddle" pos="0.043 0 0">
+            <inertial pos="0.013455 -0.00070241 -3.5721e-07" quat="0.0204051 0.706783 -0.0204379 0.70684" mass="0.005726" diaginertia="4.7655e-07 4.47482e-07 2.54788e-07"/>
+            <joint name="rh_mfj3" pos="0 0 0" axis="0 0 1" range="0 1.3" actuatorfrcrange="-10 10"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_mfmiddle"/>
+            <body name="rh_mfdistal" pos="0.025 0 0">
+              <joint name="rh_mfj4" pos="0 0 0" axis="0 0 1" range="0 1.3" actuatorfrcrange="-10 10"/>
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_mfdistal"/>
+              <!-- <site name="rh_mfdistal" pos="0.025 0.003 0" size="0.01" type="sphere"/> -->
+              <geom name="rh_mfdistal_col" type="capsule" rgba="0 0 1.0 1" contype="1" conaffinity="1" group="3" size="0.0095" fromto="0.0 0 0 0.026 -0.007 0" condim="4"/>
+            </body>
+            <geom name="rh_mfmiddle_col" type="capsule" rgba="0 0 1.0 1" contype="1" conaffinity="1" group="3" size="0.007" fromto="0.012 0.003 -0.0035 0.012 0.003 0.0035"/>
+          </body>
+          <geom name="rh_mfproximal_col" type="capsule" rgba="0 0 1.0 1" contype="1" conaffinity="1" group="3" size="0.0095" fromto="0.005 0 0 0.03 0 0"/>
+        </body>
+      </body>
+      <body name="rh_rfbase" pos="0.006966 -0.013688 0.1644" quat="-2.59734e-06 0.707105 2.59735e-06 0.707108">
+        <inertial pos="0.007003 -2.619e-09 -0.00096933" quat="0.371162 0.601863 0.601863 0.371162" mass="0.0051273" diaginertia="3.9879e-07 3.4058e-07 2.5589e-07"/>
+        <joint name="rh_rfj1" pos="0 0 0" axis="0 0 1" range="0 0.3" actuatorfrcrange="-10 10"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="joint-metal" mesh="rh_rfbase"/>
+        <body name="rh_rfproximal" pos="0.017 0 0" quat="0.707105 0.707108 0 0">
+          <inertial pos="0.02116 -0.00059146 -2.1984e-06" quat="0.507863 0.503147 0.496172 0.492678" mass="0.011802" diaginertia="2.07728e-06 2.0592e-06 6.94909e-07"/>
+          <joint name="rh_rfj2" pos="0 0 0" axis="0 0 1" range="0 1.3" actuatorfrcrange="-10 10"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_rfproximal"/>
+          <body name="rh_rfmiddle" pos="0.043 0 0">
+            <inertial pos="0.013455 -0.00070241 -3.572e-07" quat="0.0204051 0.706783 -0.0204379 0.70684" mass="0.005726" diaginertia="4.7655e-07 4.47482e-07 2.54788e-07"/>
+            <joint name="rh_rfj3" pos="0 0 0" axis="0 0 1" range="0 1.3" actuatorfrcrange="-10 10"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_rfmiddle"/>
+            <body name="rh_rfdistal" pos="0.025 0 0">
+              <joint name="rh_rfj4" pos="0 0 0" axis="0 0 1" range="0 1.3" actuatorfrcrange="-10 10"/>
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_rfdistal"/>
+              <!-- <site name="rh_rfdistal" pos="0.025 0.003 0" size="0.01" type="sphere"/> -->
+              <geom name="rh_rfdistal_col" type="capsule" rgba="0 0 1.0 1" contype="1" conaffinity="1" group="3" size="0.0095" fromto="0.0 0 0 0.026 -0.007 0" condim="4"/>
+            </body>
+            <geom name="rh_rfmiddle_col" type="capsule" rgba="0 0 1.0 1" contype="1" conaffinity="1" group="3" size="0.007" fromto="0.012 0.003 -0.0035 0.012 0.003 0.0035"/>
+          </body>
+          <geom name="rh_rfproximal_col" type="capsule" rgba="0 0 1.0 1" contype="1" conaffinity="1" group="3" size="0.0095" fromto="0.005 0 0 0.03 0 0"/>
+        </body>
+      </body>
+      <body name="rh_lfbase" pos="0.006966 -0.037988 0.1504" quat="-2.59734e-06 0.707105 2.59735e-06 0.707108">
+        <inertial pos="0.0080017 1.8833e-05 -0.0015869" quat="0.366604 0.60097 0.60931 0.364936" mass="0.003769" diaginertia="3.9885e-07 3.46938e-07 2.19942e-07"/>
+        <joint name="rh_lfj1" pos="0 0 0" axis="0 0 1" range="0 0.6" actuatorfrcrange="-10 10"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="joint-metal" mesh="rh_lfbase"/>
+        <body name="rh_lfproximal" pos="0.017 0 0" quat="0.707105 0.707108 0 0">
+          <inertial pos="0.02116 -0.00059146 -2.1978e-06" quat="0.507864 0.503146 0.496173 0.492678" mass="0.011802" diaginertia="2.07728e-06 2.0592e-06 6.94909e-07"/>
+          <joint name="rh_lfj2" pos="0 0 0" axis="0 0 1" range="0 1.3" actuatorfrcrange="-10 10"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_lfproximal"/>
+          <body name="rh_lfmiddle" pos="0.043 0 0">
+            <inertial pos="0.013455 -0.00070241 -3.5727e-07" quat="0.0204052 0.706783 -0.0204379 0.70684" mass="0.005726" diaginertia="4.7655e-07 4.47482e-07 2.54788e-07"/>
+            <joint name="rh_lfj3" pos="0 0 0" axis="0 0 1" range="0 1.3" actuatorfrcrange="-10 10"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_lfmiddle"/>
+            <body name="rh_lfdistal" pos="0.025 0 0">
+              <joint name="rh_lfj4" pos="0 0 0" axis="0 0 1" range="0 1.3" actuatorfrcrange="-10 10"/>
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="shell-plastic" mesh="rh_lfdistal"/>
+              <!-- <site name="rh_lfdistal" pos="0.025 0.003 0" size="0.01" type="sphere"/> -->
+              <geom name="rh_lfdistal_col" type="capsule" rgba="0 0 1.0 1" contype="1" conaffinity="1" group="3" size="0.0095" fromto="0.0 0 0 0.026 -0.007 0" condim="4"/>
+            </body>
+            <geom name="rh_lfmiddle_col" type="capsule" rgba="0 0 1.0 1" contype="1" conaffinity="1" group="3" size="0.007" fromto="0.012 0.003 -0.0035 0.012 0.003 0.0035"/>
+          </body>
+          <geom name="rh_lfproximal_col" type="capsule" rgba="0 0 1.0 1" contype="1" conaffinity="1" group="3" size="0.0095" fromto="0.005 0 0 0.03 0 0"/>
+        </body>
+      </body>
+      <geom name="rh_base_col" type="box" contype="1" conaffinity="1" group="3" size="0.0273 0.05 0.05" pos="-0.0022 0 0.11" rgba="0 0 1.0 1"/>
+      <geom name="rh_base_pad1" type="box" contype="1" conaffinity="1" group="3" size="0.0273 0.038 0.01" pos="-0.0022 0.012 0.17" rgba="0 0 1.0 1"/>
+      <!-- <geom name="rh_base_pad2" type="box" contype="1" conaffinity="1" group="4" size="0.008 0.038 0.025" pos="0.0331 0.012 0.155" rgba="0 1 1.0 1"/> -->
+      <site name="rh_base" pos="-0.0022 0 0.11" size="0.01" type="sphere"/>
+      <site name="rh_precision" pos="0.07 0.0 0.18" quat="0 1 0 1" group="4"/>
+      <site name="rh_power" pos="0.1 0.02 0.16" quat="0 0 1 1" group="4"/>
+    </body>
+  </worldbody>
+
+  <contact>
+    <exclude body1="rh_base" body2="rh_ffproximal"/>
+    <exclude body1="rh_base" body2="rh_mfproximal"/>
+    <exclude body1="rh_base" body2="rh_rfproximal"/>
+    <exclude body1="rh_base" body2="rh_lfproximal"/>
+  </contact>
+
+  <tendon>
+    <fixed name="rh_fft1">
+      <joint joint="rh_ffj1" coef="0.16666666667"/>
+      <joint joint="rh_rfj1" coef="0.16666666667"/>
+      <joint joint="rh_lfj1" coef="0.33333333333"/>
+    </fixed>
+    <fixed name="rh_tht3">
+      <joint joint="rh_thj3" coef="0.5"/>
+      <joint joint="rh_thj4" coef="0.5"/>
+    </fixed>
+    <fixed name="rh_fft3">
+      <joint joint="rh_ffj3" coef="0.5"/>
+      <joint joint="rh_ffj4" coef="0.5"/>
+    </fixed>
+    <fixed name="rh_mft3">
+      <joint joint="rh_mfj3" coef="0.5"/>
+      <joint joint="rh_mfj4" coef="0.5"/>
+    </fixed>
+    <fixed name="rh_rft3">
+      <joint joint="rh_rfj3" coef="0.5"/>
+      <joint joint="rh_rfj4" coef="0.5"/>
+    </fixed>
+    <fixed name="rh_lft3">
+      <joint joint="rh_lfj3" coef="0.5"/>
+      <joint joint="rh_lfj4" coef="0.5"/>
+    </fixed>
+  </tendon>
+
+  <equality>
+    <joint joint1="rh_rfj1" joint2="rh_ffj1" polycoef="0 1"/>
+    <joint joint1="rh_lfj1" joint2="rh_ffj1" polycoef="0 2"/>
+    <joint joint1="rh_thj4" joint2="rh_thj3" polycoef="0 1"/>
+    <joint joint1="rh_ffj4" joint2="rh_ffj3" polycoef="0 1"/>
+    <joint joint1="rh_mfj4" joint2="rh_mfj3" polycoef="0 1"/>
+    <joint joint1="rh_rfj4" joint2="rh_rfj3" polycoef="0 1"/>
+    <joint joint1="rh_lfj4" joint2="rh_lfj3" polycoef="0 1"/>
+  </equality>
+
+  <actuator>
+    <position name="rh_thj1"  joint="rh_thj1" kp="1" kv="0.05" ctrlrange="0 2.2" forcerange="-10 10"/>
+    <position name="rh_thj2"  joint="rh_thj2" kp="1" kv="0.01" ctrlrange="0 1.3" forcerange="-10 10"/>
+    <position name="rh_thj3"  joint="rh_thj3" kp="1" kv="0.01" ctrlrange="0 1.3" forcerange="-10 10"/>
+    <position name="rh_fft1" tendon="rh_fft1" kp="4" kv="0.05" ctrlrange="0 0.3" forcerange="-10 10"/>
+    <position name="rh_ffj2"  joint="rh_ffj2" kp="1" kv="0.01" ctrlrange="0 1.3" forcerange="-10 10"/>
+    <position name="rh_fft3" tendon="rh_fft3" kp="1" kv="0.01" ctrlrange="0 1.3" forcerange="-10 10"/>
+    <position name="rh_mfj2"  joint="rh_mfj2" kp="1" kv="0.01" ctrlrange="0 1.3" forcerange="-10 10"/>
+    <position name="rh_mft3" tendon="rh_mft3" kp="1" kv="0.01" ctrlrange="0 1.3" forcerange="-10 10"/>
+    <position name="rh_rfj2"  joint="rh_rfj2" kp="1" kv="0.01" ctrlrange="0 1.3" forcerange="-10 10"/>
+    <position name="rh_rft3" tendon="rh_rft3" kp="1" kv="0.01" ctrlrange="0 1.3" forcerange="-10 10"/>
+    <position name="rh_lfj2"  joint="rh_lfj2" kp="1" kv="0.01" ctrlrange="0 1.3" forcerange="-10 10"/>
+    <position name="rh_lft3" tendon="rh_lft3" kp="1" kv="0.01" ctrlrange="0 1.3" forcerange="-10 10"/>
+  </actuator>
+  <!-- <sensor>
+    <touch name="touch_rh_thdistal" site="rh_thdistal"/>
+    <touch name="touch_rh_ffdistal" site="rh_ffdistal"/>
+    <touch name="touch_rh_mfdistal" site="rh_mfdistal"/>
+    <touch name="touch_rh_rfdistal" site="rh_rfdistal"/>
+    <touch name="touch_rh_lfdistal" site="rh_lfdistal"/>
+  </sensor> -->
+
+</mujoco>

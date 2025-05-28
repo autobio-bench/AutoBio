@@ -1,0 +1,35 @@
+<mujoco model="bottlecap demo">
+
+    <option integrator="implicitfast" impratio="1" cone="elliptic" noslip_iterations="2">
+        <flag multiccd="enable"/>
+    </option>
+    <visual>
+        <global azimuth="220" elevation="-30"/>
+    </visual>
+
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+        <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.6 0.7 0.8" rgb2="0.4 0.5 0.6" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+        <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5"/>
+        <texture name="grid_texture" type="2d" builtin="checker" rgb1="0.8 0.3 0.1" rgb2="0.3 0.3 0.3" width="512" height="512"/>
+        <material name="grid_material" texture="grid_texture"/>
+        <model name="table" file="../misc/simple_table.xml" content_type="text/xml" />
+        <model name="dexhandbot" file="../robot/ur5e_dexhand021_right.xml" content_type="text/xml" />
+    </asset>
+
+    <worldbody>
+        <light directional="true" diffuse="0.8 0.8 0.8" ambient="0.2 0.2 0.2" pos="0 0 5" dir="0 0 -1"/>
+        <geom name="floor" pos="0 0 0" size="2.5 2 0.05" type="plane" material="groundplane"/>
+        <body name="table3" pos="0 0 0." quat="1 0 0 1">
+            <attach model="table" body="vention table" prefix="tb3"/>
+        </body>
+        <body name="dexhandbot1" pos="0 -0.5 0.824" >
+            <attach model="dexhandbot" body="base" prefix="dh1"/>
+        </body>
+        <body name="bottlecap" pos="0 0 1.10" >
+            <joint name="AZ" type="hinge" axis="0 0 1" frictionloss="0.003" damping="0.01"/>
+            <geom name="bottlecap" type="cylinder" size="0.03 0.015" material="grid_material"/>
+        </body>
+    </worldbody>
+
+</mujoco>

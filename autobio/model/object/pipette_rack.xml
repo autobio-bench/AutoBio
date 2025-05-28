@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="pipette_rack">
+  <compiler angle="radian" meshdir="../../assets" />
+
+  <asset>
+    <mesh name="obj:pipette_rack-visual" file="rack/pipette_rack_tri_vis.obj" scale="0.001 0.001 0.001" />
+    <mesh name="obj:pipette_rack-collision" file="rack/pipette_rack_tri_col.obj" scale="0.001 0.001 0.001" />
+  </asset>
+
+  <worldbody>
+    <body name="pipette_rack">
+      <geom type="mesh" mesh="pipette_rack-visual:legs" />
+      <geom type="mesh" mesh="pipette_rack-visual:beam" />
+      <geom type="mesh" mesh="pipette_rack-collision:leg1" />
+      <geom type="mesh" mesh="pipette_rack-collision:leg2" />
+      <geom type="mesh" mesh="pipette_rack-collision:beam" />
+    </body>
+  </worldbody>
+</mujoco>

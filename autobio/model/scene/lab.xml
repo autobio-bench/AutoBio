@@ -1,0 +1,68 @@
+<mujoco model="medicine lab">
+
+    <option integrator="implicitfast" impratio="1" cone="elliptic" noslip_iterations="2">
+        <flag multiccd="enable"/>
+    </option>
+    <visual>
+        <!-- <rgba haze="0.45 0.45 0.45 1"/> -->
+        <!-- <quality shadowsize="8192"/> -->
+        <global azimuth="220" elevation="-30" offwidth="1280" offheight="960"/>
+    </visual>
+
+    <asset>
+        <!-- <texture type="skybox" builtin="flat" rgb1="0.6 0.6 0.6" rgb2="0 0 0" width="512" height="3072"/> -->
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+        <!-- <texture type="skybox" builtin="gradient" rgb1="1.0 1.0 1.0" rgb2="1.0 1.0 1.0" width="512" height="3072"/> -->
+        <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.6 0.7 0.8" rgb2="0.4 0.5 0.6" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+        <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5"/>
+        <!-- <material name="plain_floor" rgba="0.6 0.7 0.8 1" /> -->
+        <model name="table" file="../misc/simple_table.xml" content_type="text/xml" />
+        <model name="dexhandbot" file="../robot/ur5e_dexhand021_right.xml" content_type="text/xml" />
+        <model name="aloha" file="../robot/aloha_left.xml" content_type="text/xml" />
+        <model name="centrifuge_10slot" file="../object/centrifuge_10slot.gen.xml" content_type="text/xml" />
+        <model name="centrifuge_50ml" file="../object/centrifuge_50ml.gen.xml" content_type="text/xml" />
+        <model name="centrifuge_10ml" file="../object/centrifuge_10ml.gen.xml" content_type="text/xml" />
+        <model name="pcr_plate_96well" file="../object/pcr_plate_96well.gen.xml" content_type="text/xml" />
+        <model name="cell_dish_100" file="../object/cell_dish_100.gen.xml" content_type="text/xml" />
+    </asset>
+
+    <worldbody>
+        <light directional="true" diffuse="0.8 0.8 0.8" ambient="0.2 0.2 0.2" pos="0 0 5" dir="0 0 -1"/>
+        <geom name="floor" pos="0 0 0" size="2.5 2 0.05" type="plane" material="groundplane"/>
+        <body name="table3" pos="0 0 0." quat="1 0 0 1">
+            <camera name="table_cam_1" pos="0 0.35 1.40" fovy="60" quat="0 0 0.259 0.966" resolution="1280 960"/>
+            <attach model="table" body="vention table" prefix="tb3"/>
+        </body>
+        <body name="dexhandbot1" pos="-0.3 -0.54 0.824" >
+            <attach model="dexhandbot" body="base" prefix="dh1"/>
+        </body>
+        <body name="aloha1" pos="0 0.54 0.824" >
+            <attach model="aloha" body="left/base_link" prefix="aloha1"/>
+        </body>
+        <body name="aloha2" pos="0.3 -0.2 0.824" quat="1 0 0 1" >
+            <attach model="aloha" body="left/base_link" prefix="aloha2"/>
+        </body>
+        <frame pos="0.06 0.05 0.854" quat="1 0 0 1">
+            <attach model="centrifuge_10slot" body="centrifuge_10slot" prefix="rack1"/>
+            <frame pos="0.0 -0.018 -0.022">
+                <attach model="centrifuge_50ml" body="centrifuge_50ml" prefix="rack1" />
+            </frame>
+            <frame pos="0.054 0.036 -0.022">
+                <attach model="centrifuge_10ml" body="centrifuge_10ml" prefix="rack1" />
+            </frame>
+        </frame>
+        <frame pos="-0.06 0.05 0.854" quat="1 0 0 1">
+            <attach model="centrifuge_10slot" body="centrifuge_10slot" prefix="rack2"/>
+            <frame pos="0.0 -0.018 -0.022">
+                <attach model="centrifuge_50ml" body="centrifuge_50ml" prefix="rack2" />
+            </frame>
+            <frame pos="0.054 0.036 -0.022">
+                <attach model="centrifuge_10ml" body="centrifuge_10ml" prefix="rack2" />
+            </frame>
+        </frame>
+        <frame pos="-0.18 0.00 0.824">
+            <attach model="cell_dish_100" body="cell_dish_100" prefix="cd"/>
+        </frame>
+    </worldbody>
+
+</mujoco>

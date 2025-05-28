@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="thermal_mixer_eppendorf_c">
+  <compiler angle="radian" autolimits="true" assetdir="../../assets" />
+  <default>
+    <default class="visual">
+      <geom type="mesh" contype="0" conaffinity="0" density="0" group="2" />
+      <mesh inertia="shell" />
+    </default>
+    <default class="inertia">
+      <geom type="mesh" contype="0" conaffinity="0" group="5" />
+      <mesh inertia="exact" />
+    </default>
+    <default class="collision">
+      <geom type="mesh" contype="0" conaffinity="1" density="0" group="3" />
+    </default>
+  </default>
+  <option gravity="0 0 0" />
+  <asset>
+    <mesh class="visual" name="body-visual-0" file="instrument/thermal_mixer_eppendorf_c/body-visual-0.obj" />
+    <material name="body-0" rgba="0 0.431373 0.968627 1" metallic="0.0" roughness="1.0" />
+    <mesh class="visual" name="body-visual-1" file="instrument/thermal_mixer_eppendorf_c/body-visual-1.obj" />
+    <texture name="body-0" type="2d" file="instrument/thermal_mixer_eppendorf_c/body-0.png" />
+    <material name="body-1" rgba="1 1 1 1" metallic="0.0" roughness="1.0" texture="body-0" />
+    <mesh class="visual" name="body-visual-2" file="instrument/thermal_mixer_eppendorf_c/body-visual-2.obj" />
+    <material name="body-2" rgba="0.647059 0.619608 0.6 1" metallic="0.0" roughness="1.0" />
+    <mesh class="visual" name="body-visual-3" file="instrument/thermal_mixer_eppendorf_c/body-visual-3.obj" />
+    <material name="body-3" rgba="0.69019608 0.67058824 0.58431373 1" metallic="0.0" roughness="1.0" />
+    <mesh class="visual" name="body-visual-4" file="instrument/thermal_mixer_eppendorf_c/body-visual-4.obj" />
+    <material name="body-4" rgba="0.85098 0.85098 0.85098 1" metallic="0.0" roughness="1.0" />
+    <mesh class="inertia" name="body-inertia" file="instrument/thermal_mixer_eppendorf_c/body-inertia.obj" />
+
+    <texture name="body-display" type="2d" file="instrument/thermal_mixer_eppendorf_c/body-display-placeholder.png" />
+    <material name="body-display" rgba="1 1 1 1" metallic="0.0" roughness="1.0" texture="body-display" emission="0.5" />
+  </asset>
+  <worldbody>
+    <frame pos="0 -0 0.09249817">
+      <body name="body" pos="0 0 0" quat="0.5 0.5 0.5 0.5">
+        <geom class="visual" mesh="body-visual-0" material="body-0" />
+        <geom class="visual" mesh="body-visual-1" material="body-1" />
+        <geom class="visual" mesh="body-visual-2" material="body-2" />
+        <geom class="visual" mesh="body-visual-3" material="body-3" />
+        <geom class="visual" mesh="body-visual-4" material="body-4" />
+        <geom class="inertia" mesh="body-inertia" density="1000" />
+        <geom class="collision" type="box" size="0.15033577 0.10072497 0.02991682" pos="0.00186334 -0.06069169 -0.00926348" quat="0.70710681 -0.70710675 0 0" />
+        <geom class="collision" type="box" size="0.12129409 0.10188704 0.02098387" pos="0.02965375 -0.00846489 -0.00922712" quat="0.70710681 -0.70710675 0 0" />
+        <geom class="collision" type="box" size="0.06161729 0.10025134 0.01065979" pos="-0.09332679 -0.00207629 -0.00967234" quat="0.6676502 -0.66765015 -0.23290179 0.23290177" />
+        <geom class="collision" type="box" size="0.10204284 0.00683687 0.01765341" pos="0.04575302 0.01185085 0.08553979" quat="0.70408505 -0.704085 0.0653014 -0.0653014" />
+        <geom class="collision" type="box" size="0.10204284 0.00683687 0.01765341" pos="0.04575302 0.01185087 -0.10279456" quat="0.70408505 -0.704085 0.0653014 -0.0653014" />
+        <geom class="collision" type="box" size="0.05654196 0.07333491 0.02222099" pos="0.01767512 0.03368212 -0.00692018" quat="0.70710681 -0.70710675 0 0" />
+        <site name="button-menu-down" group="3" pos="-0.11360512 -0.00302507 -0.071" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-menu-enter" group="3" pos="-0.101911 0.00626801 -0.071" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-menu-left" group="3" pos="-0.101911 0.00626801 -0.08624256" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-menu-right" group="3" pos="-0.101911 0.006268 -0.05631481" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-menu-up" group="3" pos="-0.08967406 0.01553446 -0.071" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-prog-1" group="3" pos="-0.083912 0.020341 -0.03852143" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-prog-2" group="3" pos="-0.083912 0.020341 -0.01569296" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-prog-3" group="3" pos="-0.083912 0.020341 0.00645498" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-prog-4" group="3" pos="-0.083912 0.020341 0.02790428" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-prog-5" group="3" pos="-0.08427557 0.020341 0.05022066" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-short" group="3" pos="-0.10231422 0.00569353 0.06800514" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-speed-down" group="3" pos="-0.13524599 -0.019868 0.03635469" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-speed-up" group="3" pos="-0.12379485 -0.01120483 0.03635469" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-start-stop" group="3" pos="-0.12949049 -0.01576343 0.06758012" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-temp-down" group="3" pos="-0.13524599 -0.019868 0.00569977" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-temp-up" group="3" pos="-0.12379485 -0.01120483 0.00569977" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-time-down" group="3" pos="-0.13524599 -0.019868 -0.025083" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="button-time-up" group="3" pos="-0.12379485 -0.01120483 -0.025083" quat="0.23025696 -0.23025694 0.66856695 -0.6685669" size="0.004 0.004 0.004" />
+        <site name="thermoblock-function" group="3" pos="-0.0061 0.0665 0.03830001" quat="0.70710681 -0.70710675 0 0" size="0.01 0.01 0.01" user="2 4 0.018144128 6 0.0176925056 0.009904" />
+
+        <geom class="visual" type="plane" pos="-0.102221 0.006093 0.005843" size="0.049369 0.012886 1" quat="0.635543 -0.309975 -0.635543 -0.309975" material="body-display" />
+      </body>
+    </frame>
+  </worldbody>
+  <sensor>
+    <touch name="button-menu-down" site="button-menu-down" />
+    <touch name="button-menu-enter" site="button-menu-enter" />
+    <touch name="button-menu-left" site="button-menu-left" />
+    <touch name="button-menu-right" site="button-menu-right" />
+    <touch name="button-menu-up" site="button-menu-up" />
+    <touch name="button-prog-1" site="button-prog-1" />
+    <touch name="button-prog-2" site="button-prog-2" />
+    <touch name="button-prog-3" site="button-prog-3" />
+    <touch name="button-prog-4" site="button-prog-4" />
+    <touch name="button-prog-5" site="button-prog-5" />
+    <touch name="button-short" site="button-short" />
+    <touch name="button-speed-down" site="button-speed-down" />
+    <touch name="button-speed-up" site="button-speed-up" />
+    <touch name="button-start-stop" site="button-start-stop" />
+    <touch name="button-temp-down" site="button-temp-down" />
+    <touch name="button-temp-up" site="button-temp-up" />
+    <touch name="button-time-down" site="button-time-down" />
+    <touch name="button-time-up" site="button-time-up" />
+  </sensor>
+</mujoco>

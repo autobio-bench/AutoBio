@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="pipette">
+  <compiler angle="radian" meshdir="../../assets" />
+
+  <asset>
+    <mesh name="obj:pipette" file="tool/pipette.obj" scale="0.1 0.1 0.1" />
+  </asset>
+  <worldbody>
+    <body name="pipette">
+      <geom type="mesh" mesh="pipette:body" />
+
+      <!-- Simplified collision geom -->
+      <!-- <geom type="cylinder" size="0.007 0.0544" pos="-0.0021 0.0 0.12386" rgba="1 0 0 0.3" conaffinity="2" /> -->
+      <!-- <geom type="cylinder" size="0.0075 0.0544" pos="0.0109 0.0 0.12386" rgba="1 0 0 0.3" conaffinity="2" /> -->
+
+      <!-- Padding for power grasp -->
+      <!-- <geom type="box" size="0.012 0.015 0.04" pos="0.005 0.015 0.1157" rgba="1 0 0 0.3" density="0" euler="0 0 0.8" /> -->
+      <!-- <geom type="box" size="0.008 0.006 0.04" pos="-0.016 0.0 0.1157" rgba="1 0 0 0.3" density="0" euler="0 0 0" /> -->
+      <!-- <geom type="box" size="0.010 0.006 0.018" pos="-0.018 0.0 0.09" rgba="1 0 0 0.3" density="0" euler="0 0 0" /> -->
+
+      <geom type="mesh" mesh="pipette:tube" />
+      <geom name="connector" type="mesh" mesh="pipette:connector:cylinder-z" conaffinity="5" />
+      <!-- <site pos=" 0.0179 0.0 0.1557" rgba="1 0 0 0.3" /> -->
+      <!-- <site pos=" 0.0179 0.0 0.1292" rgba="1 0 0 0.3" /> -->
+      <!-- <site pos=" 0.0179 0.0 0.1027" rgba="1 0 0 0.3" /> -->
+      <!-- <site pos=" 0.0179 0.0 0.0762" rgba="1 0 0 0.3" /> -->
+      <!-- <site pos="-0.0091 0.0 0.1292" rgba="1 0 0 0.3" /> -->
+
+      <body name="pipette_button">
+        <joint name="pipette_button" type="slide" axis="0 0 1" range="-0.008 0" stiffness="50" damping="1" springref="0.003" frictionloss="0.02" />
+        <geom type="mesh" mesh="pipette:pusher_mid:cylinder-z" />
+        <body name="pipette_knob" >
+          <joint name="knob" type="hinge" axis="0 0 1" range="-1.5 1.5" frictionloss="0.0001" />
+          <geom type="mesh" mesh="pipette:knob:cylinder-z" />
+        </body>
+      </body>
+      <body name="pipette_ejector">
+        <joint name="pipette_ejector" type="slide" axis="0 0 1" range="-0.0095 0" stiffness="50" damping="1" springref="0.003" frictionloss="0.02"/>
+        <geom type="mesh" mesh="pipette:pusher_right1" />
+        <geom type="mesh" mesh="pipette:pusher_right2" />
+        <geom type="mesh" mesh="pipette:pusher_right3" />
+      </body>
+    </body>
+  </worldbody>
+
+  <contact>
+    <exclude body1="pipette" body2="pipette_button" />
+    <exclude body1="pipette" body2="pipette_knob" />
+    <exclude body1="pipette" body2="pipette_ejector" />
+  </contact>
+</mujoco>

@@ -1,0 +1,21 @@
+<mujoco model="pipette_rack">
+  <compiler angle="radian" meshdir="../../assets/"/>
+
+  <asset>
+    <mesh name="pipette_rack-visual_beam_visual" file="rack/pipette_rack_tri_vis/beam_visual.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="pipette_rack-visual_legs_visual" file="rack/pipette_rack_tri_vis/legs_visual.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="pipette_rack-collision_beam_collision_0" file="rack/pipette_rack_tri_col/beam_collision_0.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="pipette_rack-collision_leg2_collision_0" file="rack/pipette_rack_tri_col/leg2_collision_0.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="pipette_rack-collision_leg1_collision_0" file="rack/pipette_rack_tri_col/leg1_collision_0.obj" scale="0.001 0.001 0.001"/>
+  </asset>
+
+  <worldbody>
+    <body name="pipette_rack">
+      <geom type="mesh" contype="0" conaffinity="0" group="2" mesh="pipette_rack-visual_legs_visual"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="2" mesh="pipette_rack-visual_beam_visual"/>
+      <geom type="mesh" group="3" mesh="pipette_rack-collision_leg1_collision_0"/>
+      <geom type="mesh" group="3" mesh="pipette_rack-collision_leg2_collision_0"/>
+      <geom type="mesh" group="3" mesh="pipette_rack-collision_beam_collision_0"/>
+    </body>
+  </worldbody>
+</mujoco>

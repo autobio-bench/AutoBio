@@ -1,0 +1,51 @@
+<mujoco model="manipulate thermal cycler">
+
+    <option integrator="implicitfast" impratio="10" cone="elliptic" noslip_iterations="2">
+        <flag multiccd="enable"/>
+    </option>
+    <visual>
+        <global azimuth="220" elevation="-30" offwidth="1280" offheight="960"/>
+    </visual>
+
+    <asset>
+        <!-- <texture type="skybox" builtin="flat" rgb1="0.6 0.6 0.6" rgb2="0 0 0" width="512" height="3072"/> -->
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+        <!-- <texture type="skybox" builtin="gradient" rgb1="1.0 1.0 1.0" rgb2="1.0 1.0 1.0" width="512" height="3072"/> -->
+        <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.6 0.7 0.8" rgb2="0.4 0.5 0.6" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+        <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5"/>
+        <!-- <model name="centrifuge_10slot" file="../object/centrifuge_10slot.gen.xml" content_type="text/xml" /> -->
+        <model name="table" file="../misc/simple_table.xml" content_type="text/xml" />
+        <!-- <model name="aloha" file="../robot/aloha_left.xml" content_type="text/xml" /> -->
+        <model name="thermal_cycler" file="../instrument/thermal_cycler_biorad_c1000.xml" content_type="text/xml" />
+        <model name="ur5e" file="../robot/ur5e_gripper.xml" content_type="text/xml" />
+    </asset>
+
+    <worldbody>
+        <light directional="true" diffuse="0.8 0.8 0.8" ambient="0.2 0.2 0.2" pos="0 0 5" dir="0 0 -1"/>
+        <geom name="floor" pos="0 0 0" size="2.5 2 0.05" type="plane" material="groundplane"/>      
+        <body name="table" pos="0 0 0." quat="1 0 0 1">
+            <attach model="table" body="vention table" prefix="/"/>
+            <!-- <body name="aloha1" pos="0.5 0.1 0.824" quat="1 0 0 -1" >
+                <attach model="aloha" body="left/base_link" prefix="1/aloha:"/>
+            </body> -->
+            <!-- <body name="aloha2" pos="-0.2 -0.3 0.824" >
+                <attach model="aloha" body="left/base_link" prefix="2/aloha:"/>
+            </body> -->
+            <site name="instrument_site" pos="0.0 0.05 0.824" size="0.01" rgba="1 0 0 1" group="3" />
+            <body name="thermal cycler" pos="0.0 0.05 0.824">
+                <attach model="thermal_cycler" body="world" prefix="/thermal_cycler_biorad_c1000:" />
+            </body>
+            <site name="arm1_site" pos="0.5 -0.0 0.824" quat="0 0 0 1" size="0.01" rgba="0 1 0 1" group="3" />
+            <body name="1/ur5e" pos="0.5 -0. 0.824" quat="0 0 0 1">
+                <attach model="ur5e" body="world" prefix="/ur:"/>
+            </body>
+            <!-- <site name="arm2_site" pos="-0.5 -0. 0.824" quat="0 0 0 1" size="0.01" rgba="1 0 0 1" group="3" />
+            <body name="2/ur5e" pos="-0.5 -0. 0.824" quat="0 0 0 1">
+                <attach model="ur5e" body="world" prefix="1/ur:"/>
+            </body> -->
+            <camera name="table_cam_front" pos="0. -1.5 1.65" quat="0.819 0.574 0 0" fovy="45" resolution="1280 960"/>
+            <camera name="table_cam_left" pos="-1.2 0. 1.65" quat="0.579 0.406 -0.406 -0.579" fovy="45" resolution="1280 960"/>
+        </body>
+    </worldbody>
+
+</mujoco>

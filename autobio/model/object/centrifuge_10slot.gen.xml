@@ -1,0 +1,117 @@
+<mujoco model="centrifuge_10slot">
+  <compiler angle="radian" meshdir="../../assets/"/>
+
+  <asset>
+    <mesh name="centrifuge_10slot-visual_pillars_visual" file="rack/centrifuge_10slot_vis/pillars_visual.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="centrifuge_10slot-visual_lower_plane_visual" file="rack/centrifuge_10slot_vis/lower_plane_visual.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="centrifuge_10slot-visual_upper_plane_visual" file="rack/centrifuge_10slot_vis/upper_plane_visual.obj" scale="0.001 0.001 0.001"/>
+
+    <material name="centrifuge_10slot" rgba="0.3 0.4 0.6 1"/>
+  </asset>
+
+  <worldbody>
+    <body name="centrifuge_10slot">
+      <site name="centrifuge_10slot-15ml" pos="-0.09 0.036 -0.024" quat="1 0 0 -1" size="0.005" rgba="1 0 0 1" group="3" user="2 3 0.036 6 0.036 0.06"/>
+      <site name="centrifuge_10slot-50ml" pos="-0.072 0.018 -0.024" quat="1 0 0 -1" size="0.005" rgba="1 0 0 1" group="3" user="2 2 0.036 5 0.036 0.06"/>
+      <geom size="0.1025 0.048 0.003" pos="0 0 -0.027" type="box" group="3"/>
+      <geom size="0.1025 0.00175 0.03" pos="0 0.04625 0" type="box" group="3"/>
+      <geom size="0.1025 0.00175 0.03" pos="0 -0.04625 0" type="box" group="3"/>
+      <geom size="0.002 0.048 0.03" pos="0.1005 0 0" type="box" group="3"/>
+      <geom size="0.002 0.048 0.03" pos="-0.1005 0 0" type="box" group="3"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="2" mesh="centrifuge_10slot-visual_upper_plane_visual" material="centrifuge_10slot"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="2" mesh="centrifuge_10slot-visual_lower_plane_visual" material="centrifuge_10slot"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="2" mesh="centrifuge_10slot-visual_pillars_visual" material="centrifuge_10slot"/>
+      <frame>
+        <frame>
+          <geom size="0.003 0.0095 0.03" pos="-0.09 -0.018 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.003 0.0095 0.03" pos="-0.054 -0.018 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.003 0.0095 0.03" pos="-0.018 -0.018 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.003 0.0095 0.03" pos="0.018 -0.018 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.003 0.0095 0.03" pos="0.054 -0.018 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.003 0.0095 0.03" pos="0.09 -0.018 0" type="box" group="3"/>
+        </frame>
+      </frame>
+      <frame>
+        <frame>
+          <geom size="0.003 0.0095 0.03" pos="-0.09 0.018 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.003 0.0095 0.03" pos="-0.054 0.018 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.003 0.0095 0.03" pos="-0.018 0.018 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.003 0.0095 0.03" pos="0.018 0.018 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.003 0.0095 0.03" pos="0.054 0.018 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.003 0.0095 0.03" pos="0.09 0.018 0" type="box" group="3"/>
+        </frame>
+      </frame>
+      <frame>
+        <frame>
+          <geom size="0.0095 0.003 0.03" pos="-0.072 -0.036 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.0095 0.003 0.03" pos="-0.036 -0.036 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.0095 0.003 0.03" pos="0 -0.036 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.0095 0.003 0.03" pos="0.036 -0.036 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.0095 0.003 0.03" pos="0.072 -0.036 0" type="box" group="3"/>
+        </frame>
+      </frame>
+      <frame>
+        <frame>
+          <geom size="0.0095 0.003 0.03" pos="-0.072 0 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.0095 0.003 0.03" pos="-0.036 0 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.0095 0.003 0.03" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.0095 0.003 0.03" pos="0.036 0 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.0095 0.003 0.03" pos="0.072 0 0" type="box" group="3"/>
+        </frame>
+      </frame>
+      <frame>
+        <frame>
+          <geom size="0.0095 0.003 0.03" pos="-0.072 0.036 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.0095 0.003 0.03" pos="-0.036 0.036 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.0095 0.003 0.03" pos="0 0.036 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.0095 0.003 0.03" pos="0.036 0.036 0" type="box" group="3"/>
+        </frame>
+        <frame>
+          <geom size="0.0095 0.003 0.03" pos="0.072 0.036 0" type="box" group="3"/>
+        </frame>
+      </frame>
+    </body>
+  </worldbody>
+</mujoco>

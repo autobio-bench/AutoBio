@@ -1,0 +1,74 @@
+<mujoco model="pipette">
+  <compiler angle="radian" meshdir="../../assets/"/>
+
+  <asset>
+    <mesh name="pipette_connector_visual" file="tool/pipette/connector_visual.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_knob_visual" file="tool/pipette/knob_visual.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_tube_visual" file="tool/pipette/tube_visual.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_tube_collision_0" file="tool/pipette/tube_collision_0.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_tube_collision_1" file="tool/pipette/tube_collision_1.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_pusher_right1_visual" file="tool/pipette/pusher_right1_visual.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_pusher_right1_collision_0" file="tool/pipette/pusher_right1_collision_0.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_pusher_right2_visual" file="tool/pipette/pusher_right2_visual.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_pusher_right2_collision_0" file="tool/pipette/pusher_right2_collision_0.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_body_visual" file="tool/pipette/body_visual.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_body_collision_0" file="tool/pipette/body_collision_0.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_body_collision_1" file="tool/pipette/body_collision_1.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_body_collision_2" file="tool/pipette/body_collision_2.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_body_collision_3" file="tool/pipette/body_collision_3.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_pusher_mid_visual" file="tool/pipette/pusher_mid_visual.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_pusher_right3_visual" file="tool/pipette/pusher_right3_visual.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_pusher_right3_collision_0" file="tool/pipette/pusher_right3_collision_0.obj" scale="0.1 0.1 0.1"/>
+    <mesh name="pipette_pusher_right3_collision_1" file="tool/pipette/pusher_right3_collision_1.obj" scale="0.1 0.1 0.1"/>
+
+    <material name="pipette_plastic" rgba="0.8 0.8 0.8 1"/>
+    <material name="pipette_button" rgba="0.5 0.7 0.9 1"/>
+
+    <model name="pipette_tip" file="pipette_tip.gen.xml" content_type="text/xml"/>
+  </asset>
+
+  <worldbody>
+    <body name="pipette" pos="0.06 0 -0.15" quat="1.32679e-06 0 0 1">
+      <frame name="tip" pos="0 0 -0.003">
+         <attach model="pipette_tip" body="pipette_tip" prefix="tip/"/>
+         <site name="tip_site" pos="0 0 -0.05" quat="1 0 0 0" type="sphere" group="5" rgba="0.9 0.9 0.9 1" size="0.0005"/>
+      </frame>
+      <geom type="mesh" contype="0" conaffinity="0" group="2" mesh="pipette_body_visual" material="pipette_plastic"/>
+      <geom type="mesh" group="3" mesh="pipette_body_collision_0"/>
+      <geom type="mesh" group="3" mesh="pipette_body_collision_1"/>
+      <geom type="mesh" group="3" mesh="pipette_body_collision_2"/>
+      <geom type="mesh" group="3" mesh="pipette_body_collision_3"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="2" mesh="pipette_tube_visual" material="pipette_plastic"/>
+      <geom type="mesh" group="3" mesh="pipette_tube_collision_0"/>
+      <geom type="mesh" group="3" mesh="pipette_tube_collision_1"/>
+      <geom name="connector_visual" type="mesh" contype="0" conaffinity="0" group="2" mesh="pipette_connector_visual" material="pipette_plastic"/>
+      <geom name="connector_collision" size="0.00199955 0.004" pos="-1.44533e-09 0 -0.004" type="cylinder" conaffinity="5" group="3"/>
+      <body name="pipette_ejector">
+        <joint name="pipette_ejector" pos="0 0 0" axis="0 0 1" type="slide" springref="0.03" stiffness="1" limited="true" range="-0.0095 0" damping="0.1"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="2" mesh="pipette_pusher_right1_visual" material="pipette_button"/>
+        <geom type="mesh" group="3" mesh="pipette_pusher_right1_collision_0"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="2" mesh="pipette_pusher_right2_visual" material="pipette_button"/>
+        <geom type="mesh" group="3" mesh="pipette_pusher_right2_collision_0"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="2" mesh="pipette_pusher_right3_visual" material="pipette_button"/>
+        <geom type="mesh" group="3" mesh="pipette_pusher_right3_collision_0"/>
+        <geom type="mesh" group="3" mesh="pipette_pusher_right3_collision_1"/>
+      </body>
+      <body name="pipette_button">
+        <joint name="pipette_button" pos="0 0 0" axis="0 0 1" type="slide" springref="0.04" stiffness="1" limited="true" range="-0.008 0" damping="1"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="2" mesh="pipette_pusher_mid_visual" material="pipette_plastic"/>
+        <geom size="0.00502107 0.00485" pos="-9.75971e-10 0 0.181306" type="cylinder" group="3"/>
+        <body name="pipette_knob">
+          <joint name="knob" pos="0 0 0" axis="0 0 1" range="-1.5 1.5" damping="1" frictionloss="0.0001"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="2" mesh="pipette_knob_visual" material="pipette_button"/>
+          <geom size="0.00869505 0.00225" pos="0 0 0.188406" type="cylinder" group="3"/>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <contact>
+    <exclude body1="pipette" body2="pipette_button"/>
+    <exclude body1="pipette" body2="pipette_knob"/>
+    <exclude body1="pipette" body2="pipette_ejector"/>
+  </contact>
+</mujoco>

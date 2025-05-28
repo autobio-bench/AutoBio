@@ -1,0 +1,15 @@
+<mujoco>
+  <worldbody>
+    <body name="phone" pos="0 0 0">
+      <geom name="body" type="box" size="0.08 0.04 0.006" pos="0 0 0" rgba="0.8 0.8 0.8 1"/>
+
+      <geom name="bevel1" type="cylinder" size="0.003 0.08" pos="0 0.04 0.003" quat="1 0 1 0" rgba="0.8 0.8 0.8 1"/>
+      <geom name="bevel2" type="cylinder" size="0.003 0.08" pos="0 -0.04 0.003" quat="1 0 1 0" rgba="0.8 0.8 0.8 1"/>
+      <geom name="bevel3" type="cylinder" size="0.003 0.08" pos="0 0.04 -0.003" quat="1 0 1 0" rgba="0.8 0.8 0.8 1"/>
+      <geom name="bevel4" type="cylinder" size="0.003 0.08" pos="0 -0.04 -0.003" quat="1 0 1 0" rgba="0.8 0.8 0.8 1"/>
+      
+      <geom name="sidebar1" type="box" size="0.08 0.003 0.003" pos="0 0.04 0" rgba="0.8 0.8 0.8 1"/>
+      <geom name="sidebar2" type="box" size="0.08 0.003 0.003" pos="0 -0.04 0" rgba="0.8 0.8 0.8 1"/>
+    </body>
+  </worldbody>
+</mujoco>

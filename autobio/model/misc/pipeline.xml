@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="dexhand021_right_sim">
+  <compiler angle="radian" meshdir="../assets" texturedir="../assets" />
+  <size nkey="5"/>
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+  </visual>
+
+  <option
+    timestep="0.001" integrator="implicitfast"
+    noslip_iterations="3"
+    cone="elliptic" impratio="10"
+    gravity="0 0 -9.81"
+  />
+  <asset>
+    <model name="dexhand" file="../hand/dexhand021_right.xml" content_type="text/xml" />
+    <model name="ur5e_dexhand021_right" file="../robot/ur5e_dexhand021_right.xml" content_type="text/xml" />
+    <model name="pipette" file="../object/pipette.gen.xml" content_type="text/xml" />
+    <!-- <model name="pipette_rack" file="../object/pipette_rack.gen.xml" content_type="text/xml" /> -->
+    <model name="tip_box" file="../object/tip_box.gen.xml" content_type="text/xml" />
+    <model name="pipette_tip" file="../object/pipette_tip.gen.xml" content_type="text/xml" />
+      <model name="centrifuge_10slot" file="../object/centrifuge_10slot.gen.xml" content_type="text/xml" />
+    <model name="centrifuge_50ml" file="../object/centrifuge_50ml.gen.xml" content_type="text/xml" />
+    <model name="centrifuge_10ml" file="../object/centrifuge_10ml.gen.xml" content_type="text/xml" />
+  </asset>
+  <worldbody>
+    <geom type="plane" size="0.5 0.5 0.025" pos="0 0 0" />
+
+    <!-- <body name="robot">
+      <freejoint name="robot"/>
+      <attach model="dexhand" body="rh_base" prefix="dh"/>
+    </body>
+
+    <frame pos="-0.1 -0.6 0">
+      <attach model="ur5e_dexhand021_right" body="base" prefix="ur"/>
+    </frame> -->
+
+    <body name="tool" pos="0 0 0.08" quat="0 0 0 1">
+      <!-- <freejoint name="tool"/> -->
+      <attach model="pipette" body="pipette" prefix="ob" />
+      <!-- <geom type="cylinder" size="0.012 0.08" pos="0 0 0.10" group="3"/> -->
+    </body>
+
+    <frame pos="0.1 0 0.02">
+      <attach model="tip_box" body="tip_box" prefix="ob" />
+
+      <replicate count="6" offset="0.008 0 0">
+        <replicate count="4" offset="0 0.008 0">
+          <body name="pipette_tip" pos="-0.02 -0.012 0.036">
+            <attach model="pipette_tip" body="pipette_tip" prefix="ob" />
+          </body>
+        </replicate>
+      </replicate>
+    </frame>
+
+    <!-- <frame pos="0.3 0 0" quat="1 0 0 1">
+      <attach model="pipette_rack" body="pipette_rack" prefix="ob" />
+    </frame> -->
+
+    <frame pos="-0.2 0 0.03">
+      <attach model="centrifuge_10slot" body="centrifuge_10slot" prefix="ob" />
+
+      <frame pos="0.0 -0.018 -0.022">
+        <attach model="centrifuge_50ml" body="centrifuge_50ml" prefix="ob" />
+      </frame>
+
+      <frame pos="0.054 0 -0.022">
+        <attach model="centrifuge_10ml" body="centrifuge_10ml" prefix="ob" />
+      </frame>
+    </frame>
+  </worldbody>
+</mujoco>

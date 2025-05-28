@@ -1,0 +1,41 @@
+<mujoco model="power_stick">
+  <compiler angle="radian" meshdir="../assets" texturedir="../assets" />
+  <visual>
+      <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0" />
+      <global offwidth="720" offheight="540" />
+  </visual>
+
+  <option timestep="0.01" integrator="implicitfast" noslip_iterations="3" cone="elliptic" impratio="10" />
+
+  <option gravity="0 0 -9.81" />
+
+  <asset>
+    <model name="dexhand" file="../hand/dexhand021_right.xml" content_type="text/xml" />
+  </asset>
+
+  <worldbody>
+    <camera pos="-0.202 0.656 0.384" xyaxes="-0.984 -0.178 0.000 0.057 -0.316 0.947" />
+    <geom type="plane" size="1.0 1.0 0.05" pos="0.1 0 0" rgba="1 1 1 1" />
+
+    <body name="robot" pos="0 0. 0.25" quat="0.653 0.271 0.653 0.271" gravcomp="1">
+      <attach model="dexhand" body="rh_base" prefix="dh" />
+    </body>
+
+    <body name="stick" pos="-1 0 0.02" quat="0.707 0.707 0 0">
+      <freejoint name="stick" />
+      <geom name="stick_col" type="capsule" size="0.0075 0.08" group="2" contype="0" conaffinity="1" density="500" rgba="0.1 0.6 0.2 0.6" />
+    </body>
+
+    <body name="disk" pos="-0.8 0 0.02">
+      <freejoint name="disk" />
+      <geom name="disk_col" type="cylinder" size="0.05499999999999999 0.01" group="2" contype="0" conaffinity="1" density="500" rgba="0.1 0.6 0.2 0.6" />
+    </body>
+
+    <body name="ball" pos="-0.6 0 0.02">
+      <freejoint name="ball" />
+      <geom name="ball_col" type="sphere" size="0.02" group="2" contype="0" conaffinity="1" density="500" rgba="0.1 0.6 0.2 0.6" />
+    </body>
+
+  </worldbody>
+
+</mujoco>
