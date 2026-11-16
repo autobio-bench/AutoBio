@@ -22,7 +22,7 @@ def make_thermal_mixer_extra(task: Task):
     context = [(mixer.ui_state, None, *mixer.ui_state.make_canvas(), mixer.display) for mixer in thermal_mixers]
     def update_texture(ui, last_ui, fig, ax, target, render_context):
         if last_ui == ui:
-            return ui
+            return last_ui
         ui.draw(ax)
         img = ui.render_canvas(fig)
         temp_model.tex(target).data[...] = img
